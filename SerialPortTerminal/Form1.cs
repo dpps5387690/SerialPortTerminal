@@ -259,5 +259,29 @@ namespace SerialPortTerminal
             if (bunifuCheckBox_ENdLine.Checked)
                 bunifuCheckBox_ENdLine.Checked = false;
         }
+
+        private void bunifuTileButton_Close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void bunifuTileButton_MaxSize_Click(object sender, EventArgs e)
+        {
+            if (bunifuFormDock1.WindowState == Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized)
+            {
+                bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Normal;
+            }
+            else
+            {
+                bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized;
+
+            }
+        }
+
+        private void bunifuTileButton__MinSize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+            bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Minimized;
+        }
     }
 }
