@@ -313,7 +313,7 @@
             this.bunifuImageButton_Clear.ShowSizeMarkers = false;
             this.bunifuImageButton_Clear.Size = new System.Drawing.Size(51, 51);
             this.bunifuImageButton_Clear.TabIndex = 4;
-            this.bunifuImageButton_Clear.ToolTipText = "refresh serial port";
+            this.bunifuImageButton_Clear.ToolTipText = "Clear View";
             this.bunifuImageButton_Clear.WaitOnLoad = false;
             this.bunifuImageButton_Clear.Zoom = 0;
             this.bunifuImageButton_Clear.ZoomSpeed = 10;
@@ -346,7 +346,7 @@
             this.bunifuImageButton_ReFresh.ShowSizeMarkers = false;
             this.bunifuImageButton_ReFresh.Size = new System.Drawing.Size(51, 51);
             this.bunifuImageButton_ReFresh.TabIndex = 4;
-            this.bunifuImageButton_ReFresh.ToolTipText = "";
+            this.bunifuImageButton_ReFresh.ToolTipText = "refresh serial port";
             this.bunifuImageButton_ReFresh.WaitOnLoad = false;
             this.bunifuImageButton_ReFresh.Zoom = 0;
             this.bunifuImageButton_ReFresh.ZoomSpeed = 10;
