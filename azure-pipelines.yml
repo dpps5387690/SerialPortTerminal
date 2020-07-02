@@ -1,0 +1,48 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+trigger:
+- master
+pool:
+  vmImage: 'windows-latest'
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+steps:
+#compiler environment set
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+#包入dll檔到exe中
+- task: CmdLine@2
+  inputs:
+    script: 'enigmavbconsole Release.evb'
+    workingDirectory: 'SerialPortTerminal/bin/Release'
+#將檔案複製到build輸出位置
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'SerialPortTerminal/bin/Release'
+    Contents: |
+      ?(*.ini)
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    OverWrite: true
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'SerialPortTerminal/bin/Release/out'
+    Contents: |
+      ?(*.ini)
+      SerialPortTerminal.exe
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    OverWrite: true
+#打包輸出檔案.zip
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'SerialPortTerminal_$(Build.BuildId)'
+    publishLocation: 'Container'
