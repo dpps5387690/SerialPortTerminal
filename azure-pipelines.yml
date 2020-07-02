@@ -10,8 +10,11 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  # define minor as a counter with the prefix as variable major, and seed as 100.
+  BildCount: $[counter('LocalBildCount', 0)]
 steps:
 #compiler environment set
+- bash: echo BildCount $(BildCount)  
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -44,5 +47,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'SerialPortTerminal_$(Build.BuildId)'
+    ArtifactName: 'SerialPortTerminal_$(BildCount)'
     publishLocation: 'Container'
