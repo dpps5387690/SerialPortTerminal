@@ -214,10 +214,50 @@ namespace SerialPortTerminal
             if (WriteLog != null)
                 WriteLog.Close();
         }
-
+        int start = 0;
+        int count = 0;
+        string findstring;
         private void bunifuImageButto_Find_Click(object sender, EventArgs e)
         {
+            if (start >= richTextBox_View.Text.Length)
+            {
+                MessageBox.Show("Find end.");
+                start = 0;
+            }
+            else
+            {
+                start = richTextBox_View.Find(findstring, start, RichTextBoxFinds.None);
 
+                if (start == -1)
+                {
+                    if (count == 0)
+                    {
+                        MessageBox.Show("Not find.");
+                        start = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Find end.");
+                        start = 0;
+                    }
+                }
+                else
+                {
+                    count++;
+                    start += findstring.Length;
+                    richTextBox_View.Focus();
+                }
+                
+            }
+        }
+
+        private void bunifuMaterialTextbox_Find_OnValueChanged(object sender, EventArgs e)
+        {
+            findstring = bunifuMaterialTextbox_Find.Text;
+            count = 0;
+
+            if (bunifuCheckBox_ENdLine.Checked)
+                bunifuCheckBox_ENdLine.Checked = false;
         }
     }
 }
