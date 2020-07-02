@@ -95,7 +95,7 @@ namespace SerialPortTerminal
                         //以下這邊請自行撰寫你想要的例外處理
                     }
                 }
-                Thread.Sleep(10);
+                Thread.Sleep(1);
             }
         }
         private void DisplayText(string buffer)
@@ -103,7 +103,7 @@ namespace SerialPortTerminal
             if(WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
-            richTextBox_View.AppendText(buffer + "\n");
+            richTextBox_View.AppendText(buffer.Replace("\r", "") + Environment.NewLine);
             if (bunifuCheckBox_ENdLine.Checked)
             {
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
