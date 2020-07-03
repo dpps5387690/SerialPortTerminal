@@ -102,6 +102,9 @@ namespace SerialPortTerminal
                         textbox = nowtb[0] as Bunifu.Framework.UI.BunifuMaterialTextbox;
                         textbox.Focus();
                     }
+                    if (ID == 107)
+                        FindPrevious();
+
                     break;
             }
             base.WndProc(ref m);
@@ -113,9 +116,11 @@ namespace SerialPortTerminal
             new HotKeyClass("Save Log for View",102,KeyModifiers.Ctrl,Keys.S,"bunifuImageButton_Save"),
             new HotKeyClass("Save Log Start",103,KeyModifiers.Ctrl,Keys.D,"bunifuImageButton_SaveLog"),
             new HotKeyClass("Search",104,KeyModifiers.None,Keys.F3,"bunifuImageButton_Find"),
-            new HotKeyClass("Clear View",105,KeyModifiers.Ctrl,Keys.X,"bunifuImageButton_Clear"),
+            new HotKeyClass("Clear View",105,KeyModifiers.Alt,Keys.X,"bunifuImageButton_Clear"),
             //bunifuMaterialTextbox
-            new HotKeyClass("Clear View",106,KeyModifiers.Ctrl,Keys.F,"bunifuMaterialTextbox_Find"),
+            new HotKeyClass("Search Text",106,KeyModifiers.Ctrl,Keys.F,"bunifuMaterialTextbox_Find"),
+
+            new HotKeyClass("Search Previous",107,KeyModifiers.Shift,Keys.F3,"Previous"),
         };
         private void HotKey_Init()
         {
@@ -318,52 +323,46 @@ namespace SerialPortTerminal
             foreach (HotKeyClass hotKeyClass in HotName)
                 HotKey.UnregisterHotKey(Handle, hotKeyClass.ID);
         }
-        int start = 0;
-        int count = 0;
-        string findstring;
-        private void SearchFunction()
+        #region search
+        int selectionStart = 0;
+        int selectionStop = 0;
+        private void ShowFind()
         {
-            if (start >= richTextBox_View.Text.Length)
+            
+            if (selectionStart == -1)
             {
-                MessageBox.Show("Find end.");
-                start = 0;
+                MessageBox.Show("Not find.");
             }
             else
             {
-                start = richTextBox_View.Find(findstring, start, RichTextBoxFinds.None);
-
-                if (start == -1)
-                {
-                    if (count == 0)
-                    {
-                        MessageBox.Show("Not find.");
-                        start = 0;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Find end.");
-                        start = 0;
-                    }
-                }
-                else
-                {
-                    count++;
-                    start += findstring.Length;
-                    richTextBox_View.Focus();
-                }
-
+                selectionStop = selectionStart + bunifuMaterialTextbox_Find.Text.Length;
+                richTextBox_View.SelectionBackColor = Color.Yellow;
+                richTextBox_View.Focus();
             }
+
         }
+        private void FindNext()
+        {
+            richTextBox_View.SelectionBackColor = Color.White;
+            selectionStart = richTextBox_View.Find(bunifuMaterialTextbox_Find.Text, selectionStop, richTextBox_View.TextLength, RichTextBoxFinds.None);
+            ShowFind();
+        }
+
+        private void FindPrevious()
+        {
+            richTextBox_View.SelectionBackColor = Color.White;
+            selectionStart = richTextBox_View.Find(bunifuMaterialTextbox_Find.Text, 0, selectionStart, RichTextBoxFinds.Reverse);
+            ShowFind();
+        }
+        #endregion
+
         private void bunifuImageButton_Find_Click(object sender, EventArgs e)
         {
-            SearchFunction();
+            FindNext();
         }
 
         private void bunifuMaterialTextbox_Find_OnValueChanged(object sender, EventArgs e)
         {
-            findstring = bunifuMaterialTextbox_Find.Text;
-            count = 0;
-
             if (bunifuCheckBox_ENdLine.Checked)
                 bunifuCheckBox_ENdLine.Checked = false;
         }
@@ -394,7 +393,7 @@ namespace SerialPortTerminal
         private void bunifuMaterialTextbox_Find_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                SearchFunction();
+                FindNext();
         }
 
     }
