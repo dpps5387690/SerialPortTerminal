@@ -137,7 +137,7 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(946, 54);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(946, 49);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(64, 19);
             this.bunifuCustomLabel1.TabIndex = 8;
@@ -161,7 +161,7 @@
             this.bunifuCheckBox_ENdLine.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.bunifuCheckBox_ENdLine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuCheckBox_ENdLine.CustomCheckmarkImage = null;
-            this.bunifuCheckBox_ENdLine.Location = new System.Drawing.Point(919, 52);
+            this.bunifuCheckBox_ENdLine.Location = new System.Drawing.Point(919, 46);
             this.bunifuCheckBox_ENdLine.MinimumSize = new System.Drawing.Size(17, 17);
             this.bunifuCheckBox_ENdLine.Name = "bunifuCheckBox_ENdLine";
             this.bunifuCheckBox_ENdLine.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
