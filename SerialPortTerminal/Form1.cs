@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bunifu.UI.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -46,11 +48,108 @@ namespace SerialPortTerminal
                 bunifuDropdown__PortNum.Enabled = true;
             }
         }
+        #region HotKey       
+        private void callButtonEvent(BunifuImageButton btn, string EventName)
+        {
+            //建立一個型別      
+            Type t = typeof(BunifuImageButton);
+            //引數物件      
+            object[] p = new object[1];
+            //產生方法      
+            MethodInfo m = t.GetMethod(EventName, BindingFlags.NonPublic | BindingFlags.Instance);
+            //引數賦值。傳入函式      
+            //獲得引數資料  
+            ParameterInfo[] para = m.GetParameters();
+            //根據引數的名字，拿引數的空值。  
+            p[0] = Type.GetType(para[0].ParameterType.BaseType.FullName).GetProperty("Empty");
+            //呼叫      
+            m.Invoke(btn, p);
+            return;
+        }
+        //複寫From中的WndProc function
+        /// 
+        /// 監聽Windows狀態
+        /// 複寫WndProc方法，實現熱鍵監聽功能
+        /// 
+        /// 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_HOTKEY = 0x0312;
+            //按下快捷鍵
+            switch (m.Msg)
+            {
+                case WM_HOTKEY:
 
+                    int ID = m.WParam.ToInt32();
+
+                    HotKeyClass hotKeyClass = HotName.Find(x => x.ID == ID);
+
+                    if (hotKeyClass.ControlName.Contains("bunifuImageButton"))
+                    {
+                        Control[] nowtb;
+                        nowtb = Controls.Find(hotKeyClass.ControlName, true);
+                        BunifuImageButton tileButton = null;
+
+                        tileButton = nowtb[0] as BunifuImageButton;
+                        callButtonEvent(tileButton, "OnClick");
+                    }
+                    else if(hotKeyClass.ControlName.Contains("bunifuMaterialTextbox"))
+                    {
+                        Control[] nowtb;
+                        nowtb = Controls.Find(hotKeyClass.ControlName, true);
+                        Bunifu.Framework.UI.BunifuMaterialTextbox textbox = null;
+
+                        textbox = nowtb[0] as Bunifu.Framework.UI.BunifuMaterialTextbox;
+                        textbox.Focus();
+                    }
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+        List<HotKeyClass> HotName = new List<HotKeyClass>()
+        {
+            new HotKeyClass("Start Serial",100,KeyModifiers.None,Keys.F10,"bunifuImageButton_StartStop"),
+            new HotKeyClass("refresh serial port",101,KeyModifiers.None,Keys.F5,"bunifuImageButton_ReFresh"),
+            new HotKeyClass("Save Log for View",102,KeyModifiers.Ctrl,Keys.S,"bunifuImageButton_Save"),
+            new HotKeyClass("Save Log Start",103,KeyModifiers.Ctrl,Keys.D,"bunifuImageButton_SaveLog"),
+            new HotKeyClass("Search",104,KeyModifiers.None,Keys.F3,"bunifuImageButton_Find"),
+            new HotKeyClass("Clear View",105,KeyModifiers.Ctrl,Keys.X,"bunifuImageButton_Clear"),
+            //bunifuMaterialTextbox
+            new HotKeyClass("Clear View",106,KeyModifiers.Ctrl,Keys.F,"bunifuMaterialTextbox_Find"),
+        };
+        private void HotKey_Init()
+        {
+            foreach (HotKeyClass hotKeyClass in HotName)
+            {             
+                string keycomb = "";
+                Keys keynum = hotKeyClass.keys;
+                KeyModifiers keyModnum = hotKeyClass.keyModifiers;
+
+                HotKey.RegisterHotKey(Handle, hotKeyClass.ID, keyModnum, keynum);
+
+                if (hotKeyClass.keyModifiers != KeyModifiers.None)
+                    keycomb = "(" + keyModnum + "-" + keynum + ")";
+                else
+                    keycomb = "(" + keynum.ToString() + ")";
+
+                if (hotKeyClass.ControlName.Contains("bunifuImageButton"))
+                {
+                    Control[] nowtb;
+                    nowtb = Controls.Find(hotKeyClass.ControlName, true);
+                    BunifuImageButton tileButton = null;
+
+                    tileButton = nowtb[0] as BunifuImageButton;
+                    tileButton.ToolTipText += keycomb;
+                }
+
+            }
+        }
+        #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
             InitSerialPortNum();
             bunifuDropdown__Speed.SelectedIndex = 6;
+            HotKey_Init();
         }
 
         private void bunifuImageButton_ReFresh_Click(object sender, EventArgs e)
@@ -98,7 +197,6 @@ namespace SerialPortTerminal
                         //以下這邊請自行撰寫你想要的例外處理
                     }
                 }
-                
             }
         }
         private void DisplayText(string buffer)
@@ -216,11 +314,14 @@ namespace SerialPortTerminal
 
             if (WriteLog != null)
                 WriteLog.Close();
+
+            foreach (HotKeyClass hotKeyClass in HotName)
+                HotKey.UnregisterHotKey(Handle, hotKeyClass.ID);
         }
         int start = 0;
         int count = 0;
         string findstring;
-        private void bunifuImageButto_Find_Click(object sender, EventArgs e)
+        private void SearchFunction()
         {
             if (start >= richTextBox_View.Text.Length)
             {
@@ -250,8 +351,12 @@ namespace SerialPortTerminal
                     start += findstring.Length;
                     richTextBox_View.Focus();
                 }
-                
+
             }
+        }
+        private void bunifuImageButton_Find_Click(object sender, EventArgs e)
+        {
+            SearchFunction();
         }
 
         private void bunifuMaterialTextbox_Find_OnValueChanged(object sender, EventArgs e)
@@ -277,7 +382,6 @@ namespace SerialPortTerminal
             else
             {
                 bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized;
-
             }
         }
 
@@ -286,5 +390,12 @@ namespace SerialPortTerminal
             WindowState = FormWindowState.Minimized;
             bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Minimized;
         }
+
+        private void bunifuMaterialTextbox_Find_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SearchFunction();
+        }
+
     }
 }

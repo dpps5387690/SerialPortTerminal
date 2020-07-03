@@ -35,7 +35,7 @@
             this.bunifuDropdown__PortNum = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCheckBox_ENdLine = new Bunifu.UI.WinForms.BunifuCheckBox();
-            this.bunifuImageButto_Find = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.bunifuImageButton_Find = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuImageButton_SaveLog = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuImageButton_Save = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuImageButton_Clear = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -63,9 +63,10 @@
             this.richTextBox_View.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.richTextBox_View.Name = "richTextBox_View";
             this.richTextBox_View.ReadOnly = true;
-            this.richTextBox_View.Size = new System.Drawing.Size(1010, 522);
+            this.richTextBox_View.Size = new System.Drawing.Size(1010, 517);
             this.richTextBox_View.TabIndex = 0;
             this.richTextBox_View.Text = "";
+            this.richTextBox_View.WordWrap = false;
             // 
             // bunifuDropdown__Speed
             // 
@@ -99,7 +100,7 @@
             "38400",
             "57600",
             "115200"});
-            this.bunifuDropdown__Speed.Location = new System.Drawing.Point(0, 38);
+            this.bunifuDropdown__Speed.Location = new System.Drawing.Point(2, 38);
             this.bunifuDropdown__Speed.Name = "bunifuDropdown__Speed";
             this.bunifuDropdown__Speed.Size = new System.Drawing.Size(121, 32);
             this.bunifuDropdown__Speed.TabIndex = 5;
@@ -128,7 +129,7 @@
             this.bunifuDropdown__PortNum.ItemForeColor = System.Drawing.Color.Purple;
             this.bunifuDropdown__PortNum.ItemHeight = 26;
             this.bunifuDropdown__PortNum.ItemHighLightColor = System.Drawing.Color.Thistle;
-            this.bunifuDropdown__PortNum.Location = new System.Drawing.Point(0, 0);
+            this.bunifuDropdown__PortNum.Location = new System.Drawing.Point(2, 2);
             this.bunifuDropdown__PortNum.Name = "bunifuDropdown__PortNum";
             this.bunifuDropdown__PortNum.Size = new System.Drawing.Size(121, 32);
             this.bunifuDropdown__PortNum.TabIndex = 6;
@@ -196,38 +197,38 @@
             this.bunifuCheckBox_ENdLine.ThreeState = false;
             this.bunifuCheckBox_ENdLine.ToolTipText = null;
             // 
-            // bunifuImageButto_Find
+            // bunifuImageButton_Find
             // 
-            this.bunifuImageButto_Find.ActiveImage = null;
-            this.bunifuImageButto_Find.AllowAnimations = true;
-            this.bunifuImageButto_Find.AllowBuffering = false;
-            this.bunifuImageButto_Find.AllowZooming = true;
-            this.bunifuImageButto_Find.BackColor = System.Drawing.Color.Gray;
-            this.bunifuImageButto_Find.ErrorImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButto_Find.ErrorImage")));
-            this.bunifuImageButto_Find.FadeWhenInactive = false;
-            this.bunifuImageButto_Find.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.bunifuImageButto_Find.Image = global::SerialPortTerminal.Properties.Resources.search_96px;
-            this.bunifuImageButto_Find.ImageActive = null;
-            this.bunifuImageButto_Find.ImageLocation = null;
-            this.bunifuImageButto_Find.ImageMargin = 0;
-            this.bunifuImageButto_Find.ImageSize = new System.Drawing.Size(51, 51);
-            this.bunifuImageButto_Find.ImageZoomSize = new System.Drawing.Size(51, 51);
-            this.bunifuImageButto_Find.InitialImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButto_Find.InitialImage")));
-            this.bunifuImageButto_Find.Location = new System.Drawing.Point(648, 22);
-            this.bunifuImageButto_Find.Margin = new System.Windows.Forms.Padding(0);
-            this.bunifuImageButto_Find.Name = "bunifuImageButto_Find";
-            this.bunifuImageButto_Find.Rotation = 0;
-            this.bunifuImageButto_Find.ShowActiveImage = true;
-            this.bunifuImageButto_Find.ShowCursorChanges = true;
-            this.bunifuImageButto_Find.ShowImageBorders = true;
-            this.bunifuImageButto_Find.ShowSizeMarkers = false;
-            this.bunifuImageButto_Find.Size = new System.Drawing.Size(51, 51);
-            this.bunifuImageButto_Find.TabIndex = 4;
-            this.bunifuImageButto_Find.ToolTipText = "";
-            this.bunifuImageButto_Find.WaitOnLoad = false;
-            this.bunifuImageButto_Find.Zoom = 0;
-            this.bunifuImageButto_Find.ZoomSpeed = 10;
-            this.bunifuImageButto_Find.Click += new System.EventHandler(this.bunifuImageButto_Find_Click);
+            this.bunifuImageButton_Find.ActiveImage = null;
+            this.bunifuImageButton_Find.AllowAnimations = true;
+            this.bunifuImageButton_Find.AllowBuffering = false;
+            this.bunifuImageButton_Find.AllowZooming = true;
+            this.bunifuImageButton_Find.BackColor = System.Drawing.Color.Gray;
+            this.bunifuImageButton_Find.ErrorImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton_Find.ErrorImage")));
+            this.bunifuImageButton_Find.FadeWhenInactive = false;
+            this.bunifuImageButton_Find.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.bunifuImageButton_Find.Image = global::SerialPortTerminal.Properties.Resources.search_96px;
+            this.bunifuImageButton_Find.ImageActive = null;
+            this.bunifuImageButton_Find.ImageLocation = null;
+            this.bunifuImageButton_Find.ImageMargin = 0;
+            this.bunifuImageButton_Find.ImageSize = new System.Drawing.Size(51, 51);
+            this.bunifuImageButton_Find.ImageZoomSize = new System.Drawing.Size(51, 51);
+            this.bunifuImageButton_Find.InitialImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton_Find.InitialImage")));
+            this.bunifuImageButton_Find.Location = new System.Drawing.Point(648, 22);
+            this.bunifuImageButton_Find.Margin = new System.Windows.Forms.Padding(0);
+            this.bunifuImageButton_Find.Name = "bunifuImageButton_Find";
+            this.bunifuImageButton_Find.Rotation = 0;
+            this.bunifuImageButton_Find.ShowActiveImage = true;
+            this.bunifuImageButton_Find.ShowCursorChanges = true;
+            this.bunifuImageButton_Find.ShowImageBorders = true;
+            this.bunifuImageButton_Find.ShowSizeMarkers = false;
+            this.bunifuImageButton_Find.Size = new System.Drawing.Size(51, 51);
+            this.bunifuImageButton_Find.TabIndex = 4;
+            this.bunifuImageButton_Find.ToolTipText = "Search";
+            this.bunifuImageButton_Find.WaitOnLoad = false;
+            this.bunifuImageButton_Find.Zoom = 0;
+            this.bunifuImageButton_Find.ZoomSpeed = 10;
+            this.bunifuImageButton_Find.Click += new System.EventHandler(this.bunifuImageButton_Find_Click);
             // 
             // bunifuImageButton_SaveLog
             // 
@@ -269,6 +270,7 @@
             this.bunifuImageButton_Save.AllowAnimations = true;
             this.bunifuImageButton_Save.AllowBuffering = false;
             this.bunifuImageButton_Save.AllowZooming = true;
+            this.bunifuImageButton_Save.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.bunifuImageButton_Save.BackColor = System.Drawing.Color.Gray;
             this.bunifuImageButton_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton_Save.ErrorImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton_Save.ErrorImage")));
@@ -420,6 +422,7 @@
             this.bunifuMaterialTextbox_Find.TabIndex = 10;
             this.bunifuMaterialTextbox_Find.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bunifuMaterialTextbox_Find.OnValueChanged += new System.EventHandler(this.bunifuMaterialTextbox_Find_OnValueChanged);
+            this.bunifuMaterialTextbox_Find.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuMaterialTextbox_Find_KeyDown);
             // 
             // panel2
             // 
@@ -508,7 +511,7 @@
             this.panel4.Controls.Add(this.bunifuImageButton_Save);
             this.panel4.Controls.Add(this.bunifuDropdown__Speed);
             this.panel4.Controls.Add(this.bunifuImageButton_ReFresh);
-            this.panel4.Controls.Add(this.bunifuImageButto_Find);
+            this.panel4.Controls.Add(this.bunifuImageButton_Find);
             this.panel4.Controls.Add(this.bunifuImageButton_StartStop);
             this.panel4.Controls.Add(this.bunifuMaterialTextbox_Find);
             this.panel4.Controls.Add(this.bunifuImageButton_Clear);
@@ -525,10 +528,10 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 622);
+            this.panel3.Location = new System.Drawing.Point(0, 617);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1010, 21);
+            this.panel3.Size = new System.Drawing.Size(1010, 26);
             this.panel3.TabIndex = 34;
             // 
             // panel1
@@ -537,7 +540,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1010, 522);
+            this.panel1.Size = new System.Drawing.Size(1010, 517);
             this.panel1.TabIndex = 35;
             // 
             // bunifuElipse1
@@ -618,7 +621,7 @@
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton_ReFresh;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton_Clear;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton_Save;
-        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButto_Find;
+        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton_Find;
         private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown__Speed;
         private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown__PortNum;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
