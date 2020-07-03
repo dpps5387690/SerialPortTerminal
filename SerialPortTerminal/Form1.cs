@@ -86,7 +86,7 @@ namespace SerialPortTerminal
                         Display d = new Display(DisplayText);
                         this.Invoke(d, new Object[] { buffer });//使用委託的方式操作control
                         //this.BeginInvoke(d, new Object[] { buffer });//使用委託的方式操作control
-                        Thread.Sleep(1);
+                        //Thread.Sleep(1);
                     }
                     catch (TimeoutException timeoutEx)
                     {
