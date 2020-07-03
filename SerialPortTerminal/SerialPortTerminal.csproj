@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>log-512.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Core">
       <HintPath>.\Bunifu.Core.dll</HintPath>
@@ -132,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close_window_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log-512.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
