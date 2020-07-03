@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
@@ -81,17 +82,17 @@ namespace SerialPortTerminal
                 {
                     try
                     {
-                        string buffer = _serialPort.ReadLine();
+                        string buffer = _serialPort.ReadExisting();
 
                         Display d = new Display(DisplayText);
                         this.Invoke(d, new Object[] { buffer });//使用委託的方式操作control
                         //this.BeginInvoke(d, new Object[] { buffer });//使用委託的方式操作control
                         //Thread.Sleep(1);
                     }
-                    catch (TimeoutException timeoutEx)
-                    {
-                        //以下這邊請自行撰寫你想要的例外處理
-                    }
+                    //catch (TimeoutException timeoutEx)
+                    //{
+                    //    //以下這邊請自行撰寫你想要的例外處理
+                    //}
                     catch (Exception ex)
                     {
                         //以下這邊請自行撰寫你想要的例外處理
@@ -105,7 +106,7 @@ namespace SerialPortTerminal
             if(WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
-            richTextBox_View.AppendText(buffer.Replace("\r", "") + Environment.NewLine);
+            richTextBox_View.AppendText(buffer.Replace("\r\n", "\n"));
             if (bunifuCheckBox_ENdLine.Checked)
             {
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
