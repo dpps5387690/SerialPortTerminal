@@ -9,6 +9,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -72,13 +73,30 @@ namespace SerialPortTerminal
         /// 複寫WndProc方法，實現熱鍵監聽功能
         /// 
         /// 
+        [DllImport("user32.dll")]
+        private static extern Int32 GetForegroundWindow();
+        [DllImport("user32.dll")]
+        private static extern Int32 GetWindowText(Int32 hWnd, StringBuilder lpsb, Int32 count);
         protected override void WndProc(ref Message m)
         {
+
+
             const int WM_HOTKEY = 0x0312;
             //按下快捷鍵
             switch (m.Msg)
             {
                 case WM_HOTKEY:
+
+                    Int32 handle = 0;
+                    StringBuilder sb = new StringBuilder(256);
+                    handle = GetForegroundWindow();
+                    if (GetWindowText(handle, sb, sb.Capacity) > 0)
+                    {
+                        Debug.WriteLine("視窗標題:" + sb.ToString());
+                        if (sb.ToString() != "Serial Port Terminal")
+                            return;
+                    }
+
 
                     int ID = m.WParam.ToInt32();
 
