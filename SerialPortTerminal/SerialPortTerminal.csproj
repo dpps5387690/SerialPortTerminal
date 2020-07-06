@@ -52,6 +52,9 @@
       <HintPath>.\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.ToggleSwitch">
+      <HintPath>.\Bunifu.UI.WinForms.ToggleSwitch.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>.\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>

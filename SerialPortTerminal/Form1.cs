@@ -98,10 +98,6 @@ namespace SerialPortTerminal
             switch (m.Msg)
             {
                 case WM_HOTKEY:
-
-
-
-
                     int ID = m.WParam.ToInt32();
 
                     HotKeyClass hotKeyClass = HotName.Find(x => x.ID == ID);
@@ -232,7 +228,7 @@ namespace SerialPortTerminal
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
             richTextBox_View.AppendText(buffer.Replace("\r\n", "\n"));
-            if (bunifuCheckBox_ENdLine.Checked)
+            if (bunifuToggleSwitch_ENdLine.Value)
             {
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
                 richTextBox_View.ScrollToCaret();
@@ -385,8 +381,8 @@ namespace SerialPortTerminal
 
         private void bunifuMaterialTextbox_Find_OnValueChanged(object sender, EventArgs e)
         {
-            if (bunifuCheckBox_ENdLine.Checked)
-                bunifuCheckBox_ENdLine.Checked = false;
+            if (bunifuToggleSwitch_ENdLine.Value)
+                bunifuToggleSwitch_ENdLine.Value = false;
         }
 
         private void bunifuTileButton_Close_Click(object sender, EventArgs e)

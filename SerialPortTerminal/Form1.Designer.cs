@@ -30,11 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            Bunifu.ToggleSwitch.ToggleState toggleState1 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState2 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState3 = new Bunifu.ToggleSwitch.ToggleState();
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.bunifuDropdown__Speed = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuDropdown__PortNum = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCheckBox_ENdLine = new Bunifu.UI.WinForms.BunifuCheckBox();
             this.bunifuImageButton_Find = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuImageButton_SaveLog = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuImageButton_Save = new Bunifu.UI.WinForms.BunifuImageButton();
@@ -51,6 +53,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuFormDock1 = new Bunifu.UI.WinForms.BunifuFormDock();
+            this.bunifuToggleSwitch_ENdLine = new Bunifu.ToggleSwitch.BunifuToggleSwitch();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -143,59 +146,6 @@
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(64, 19);
             this.bunifuCustomLabel1.TabIndex = 8;
             this.bunifuCustomLabel1.Text = "End Line";
-            // 
-            // bunifuCheckBox_ENdLine
-            // 
-            this.bunifuCheckBox_ENdLine.AllowBindingControlAnimation = true;
-            this.bunifuCheckBox_ENdLine.AllowBindingControlColorChanges = false;
-            this.bunifuCheckBox_ENdLine.AllowBindingControlLocation = true;
-            this.bunifuCheckBox_ENdLine.AllowCheckBoxAnimation = false;
-            this.bunifuCheckBox_ENdLine.AllowCheckmarkAnimation = true;
-            this.bunifuCheckBox_ENdLine.AllowOnHoverStates = true;
-            this.bunifuCheckBox_ENdLine.AutoCheck = true;
-            this.bunifuCheckBox_ENdLine.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox_ENdLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCheckBox_ENdLine.BackgroundImage")));
-            this.bunifuCheckBox_ENdLine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bunifuCheckBox_ENdLine.BindingControl = null;
-            this.bunifuCheckBox_ENdLine.BindingControlPosition = Bunifu.UI.WinForms.BunifuCheckBox.BindingControlPositions.Right;
-            this.bunifuCheckBox_ENdLine.Checked = true;
-            this.bunifuCheckBox_ENdLine.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
-            this.bunifuCheckBox_ENdLine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuCheckBox_ENdLine.CustomCheckmarkImage = null;
-            this.bunifuCheckBox_ENdLine.Location = new System.Drawing.Point(919, 46);
-            this.bunifuCheckBox_ENdLine.MinimumSize = new System.Drawing.Size(17, 17);
-            this.bunifuCheckBox_ENdLine.Name = "bunifuCheckBox_ENdLine";
-            this.bunifuCheckBox_ENdLine.OnCheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
-            this.bunifuCheckBox_ENdLine.OnCheck.BorderRadius = 2;
-            this.bunifuCheckBox_ENdLine.OnCheck.BorderThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnCheck.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
-            this.bunifuCheckBox_ENdLine.OnCheck.CheckmarkColor = System.Drawing.Color.White;
-            this.bunifuCheckBox_ENdLine.OnCheck.CheckmarkThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnDisable.BorderColor = System.Drawing.Color.LightGray;
-            this.bunifuCheckBox_ENdLine.OnDisable.BorderRadius = 2;
-            this.bunifuCheckBox_ENdLine.OnDisable.BorderThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnDisable.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox_ENdLine.OnDisable.CheckmarkColor = System.Drawing.Color.LightGray;
-            this.bunifuCheckBox_ENdLine.OnDisable.CheckmarkThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnHoverChecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(131)))), ((int)(((byte)(188)))));
-            this.bunifuCheckBox_ENdLine.OnHoverChecked.BorderRadius = 2;
-            this.bunifuCheckBox_ENdLine.OnHoverChecked.BorderThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnHoverChecked.CheckBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(131)))), ((int)(((byte)(188)))));
-            this.bunifuCheckBox_ENdLine.OnHoverChecked.CheckmarkColor = System.Drawing.Color.White;
-            this.bunifuCheckBox_ENdLine.OnHoverChecked.CheckmarkThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnHoverUnchecked.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(131)))), ((int)(((byte)(188)))));
-            this.bunifuCheckBox_ENdLine.OnHoverUnchecked.BorderRadius = 2;
-            this.bunifuCheckBox_ENdLine.OnHoverUnchecked.BorderThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnHoverUnchecked.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox_ENdLine.OnUncheck.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(69)))), ((int)(((byte)(155)))));
-            this.bunifuCheckBox_ENdLine.OnUncheck.BorderRadius = 2;
-            this.bunifuCheckBox_ENdLine.OnUncheck.BorderThickness = 2;
-            this.bunifuCheckBox_ENdLine.OnUncheck.CheckBoxColor = System.Drawing.Color.Transparent;
-            this.bunifuCheckBox_ENdLine.Size = new System.Drawing.Size(21, 21);
-            this.bunifuCheckBox_ENdLine.Style = Bunifu.UI.WinForms.BunifuCheckBox.CheckBoxStyles.Bunifu;
-            this.bunifuCheckBox_ENdLine.TabIndex = 9;
-            this.bunifuCheckBox_ENdLine.ThreeState = false;
-            this.bunifuCheckBox_ENdLine.ToolTipText = null;
             // 
             // bunifuImageButton_Find
             // 
@@ -382,7 +332,7 @@
             this.bunifuImageButton_StartStop.ImageSize = new System.Drawing.Size(51, 51);
             this.bunifuImageButton_StartStop.ImageZoomSize = new System.Drawing.Size(51, 51);
             this.bunifuImageButton_StartStop.InitialImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton_StartStop.InitialImage")));
-            this.bunifuImageButton_StartStop.Location = new System.Drawing.Point(134, 19);
+            this.bunifuImageButton_StartStop.Location = new System.Drawing.Point(133, 19);
             this.bunifuImageButton_StartStop.Margin = new System.Windows.Forms.Padding(0);
             this.bunifuImageButton_StartStop.Name = "bunifuImageButton_StartStop";
             this.bunifuImageButton_StartStop.Rotation = 0;
@@ -506,6 +456,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.panel4.Controls.Add(this.bunifuToggleSwitch_ENdLine);
             this.panel4.Controls.Add(this.bunifuImageButton_SaveLog);
             this.panel4.Controls.Add(this.bunifuDropdown__PortNum);
             this.panel4.Controls.Add(this.bunifuImageButton_Save);
@@ -515,7 +466,6 @@
             this.panel4.Controls.Add(this.bunifuImageButton_StartStop);
             this.panel4.Controls.Add(this.bunifuMaterialTextbox_Find);
             this.panel4.Controls.Add(this.bunifuImageButton_Clear);
-            this.panel4.Controls.Add(this.bunifuCheckBox_ENdLine);
             this.panel4.Controls.Add(this.bunifuCustomLabel1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 30);
@@ -588,6 +538,47 @@
             this.bunifuFormDock1.TitleBarOptions.TitleBarControl = this.panel2;
             this.bunifuFormDock1.TitleBarOptions.UseBackColorOnDockingIndicators = false;
             // 
+            // bunifuToggleSwitch_ENdLine
+            // 
+            this.bunifuToggleSwitch_ENdLine.Animation = 5;
+            this.bunifuToggleSwitch_ENdLine.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuToggleSwitch_ENdLine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuToggleSwitch_ENdLine.BackgroundImage")));
+            this.bunifuToggleSwitch_ENdLine.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuToggleSwitch_ENdLine.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuToggleSwitch_ENdLine.Location = new System.Drawing.Point(910, 47);
+            this.bunifuToggleSwitch_ENdLine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuToggleSwitch_ENdLine.Name = "bunifuToggleSwitch_ENdLine";
+            this.bunifuToggleSwitch_ENdLine.Size = new System.Drawing.Size(35, 19);
+            this.bunifuToggleSwitch_ENdLine.TabIndex = 11;
+            toggleState1.BackColor = System.Drawing.Color.Empty;
+            toggleState1.BackColorInner = System.Drawing.Color.Empty;
+            toggleState1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            toggleState1.BorderColorInner = System.Drawing.Color.Empty;
+            toggleState1.BorderRadius = 1;
+            toggleState1.BorderRadiusInner = 1;
+            toggleState1.BorderThickness = 1;
+            toggleState1.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateDisabled = toggleState1;
+            toggleState2.BackColor = System.Drawing.Color.Empty;
+            toggleState2.BackColorInner = System.Drawing.Color.Empty;
+            toggleState2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            toggleState2.BorderColorInner = System.Drawing.Color.Empty;
+            toggleState2.BorderRadius = 1;
+            toggleState2.BorderRadiusInner = 1;
+            toggleState2.BorderThickness = 1;
+            toggleState2.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateOff = toggleState2;
+            toggleState3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            toggleState3.BackColorInner = System.Drawing.Color.White;
+            toggleState3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            toggleState3.BorderColorInner = System.Drawing.Color.White;
+            toggleState3.BorderRadius = 17;
+            toggleState3.BorderRadiusInner = 15;
+            toggleState3.BorderThickness = 1;
+            toggleState3.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateOn = toggleState3;
+            this.bunifuToggleSwitch_ENdLine.Value = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -625,7 +616,6 @@
         private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown__Speed;
         private Bunifu.UI.WinForms.BunifuDropdown bunifuDropdown__PortNum;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private Bunifu.UI.WinForms.BunifuCheckBox bunifuCheckBox_ENdLine;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton_SaveLog;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox_Find;
         private System.Windows.Forms.Panel panel2;
@@ -637,6 +627,7 @@
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         public Bunifu.UI.WinForms.BunifuFormDock bunifuFormDock1;
+        private Bunifu.ToggleSwitch.BunifuToggleSwitch bunifuToggleSwitch_ENdLine;
     }
 }
 
