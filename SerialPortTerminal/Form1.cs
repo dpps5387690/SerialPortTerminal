@@ -131,12 +131,12 @@ namespace SerialPortTerminal
         {
             new HotKeyClass("Start Serial",100,KeyModifiers.None,Keys.F10,"bunifuImageButton_StartStop"),
             new HotKeyClass("refresh serial port",101,KeyModifiers.None,Keys.F5,"bunifuImageButton_ReFresh"),
-            new HotKeyClass("Save Log for View",102,KeyModifiers.Ctrl,Keys.S,"bunifuImageButton_Save"),
-            new HotKeyClass("Save Log Start",103,KeyModifiers.Ctrl,Keys.D,"bunifuImageButton_SaveLog"),
+            new HotKeyClass("Save Log for View",102,KeyModifiers.Alt,Keys.S,"bunifuImageButton_Save"),
+            new HotKeyClass("Save Log Start",103,KeyModifiers.Alt,Keys.D,"bunifuImageButton_SaveLog"),
             new HotKeyClass("Search",104,KeyModifiers.None,Keys.F3,"bunifuImageButton_Find"),
             new HotKeyClass("Clear View",105,KeyModifiers.Alt,Keys.X,"bunifuImageButton_Clear"),
             //bunifuMaterialTextbox
-            new HotKeyClass("Search Text",106,KeyModifiers.Ctrl,Keys.F,"bunifuMaterialTextbox_Find"),
+            new HotKeyClass("Search Text",106,KeyModifiers.Alt,Keys.F,"bunifuMaterialTextbox_Find"),
 
             new HotKeyClass("Search Previous",107,KeyModifiers.Shift,Keys.F3,"Previous"),
         };
