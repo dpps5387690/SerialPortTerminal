@@ -79,6 +79,18 @@ namespace SerialPortTerminal
         private static extern Int32 GetWindowText(Int32 hWnd, StringBuilder lpsb, Int32 count);
         protected override void WndProc(ref Message m)
         {
+            Int32 handle = 0;
+            StringBuilder sb = new StringBuilder(256);
+            handle = GetForegroundWindow();
+            if (GetWindowText(handle, sb, sb.Capacity) > 0)
+            {
+                Debug.WriteLine("視窗標題:" + sb.ToString());
+                if (sb.ToString() != "Serial Port Terminal")
+                {
+                    base.WndProc(ref m);
+                    return;
+                }
+            }
 
 
             const int WM_HOTKEY = 0x0312;
@@ -87,15 +99,7 @@ namespace SerialPortTerminal
             {
                 case WM_HOTKEY:
 
-                    Int32 handle = 0;
-                    StringBuilder sb = new StringBuilder(256);
-                    handle = GetForegroundWindow();
-                    if (GetWindowText(handle, sb, sb.Capacity) > 0)
-                    {
-                        Debug.WriteLine("視窗標題:" + sb.ToString());
-                        if (sb.ToString() != "Serial Port Terminal")
-                            return;
-                    }
+
 
 
                     int ID = m.WParam.ToInt32();
