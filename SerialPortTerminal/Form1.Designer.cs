@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Bunifu.ToggleSwitch.ToggleState toggleState1 = new Bunifu.ToggleSwitch.ToggleState();
-            Bunifu.ToggleSwitch.ToggleState toggleState2 = new Bunifu.ToggleSwitch.ToggleState();
-            Bunifu.ToggleSwitch.ToggleState toggleState3 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState16 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState17 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState18 = new Bunifu.ToggleSwitch.ToggleState();
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.bunifuDropdown__Speed = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuDropdown__PortNum = new Bunifu.UI.WinForms.BunifuDropdown();
@@ -70,6 +70,7 @@
             this.richTextBox_View.TabIndex = 0;
             this.richTextBox_View.Text = "";
             this.richTextBox_View.WordWrap = false;
+            this.richTextBox_View.VScroll += new System.EventHandler(this.richTextBox_View_VScroll);
             // 
             // bunifuDropdown__Speed
             // 
@@ -550,33 +551,33 @@
             this.bunifuToggleSwitch_ENdLine.Name = "bunifuToggleSwitch_ENdLine";
             this.bunifuToggleSwitch_ENdLine.Size = new System.Drawing.Size(35, 19);
             this.bunifuToggleSwitch_ENdLine.TabIndex = 11;
-            toggleState1.BackColor = System.Drawing.Color.Empty;
-            toggleState1.BackColorInner = System.Drawing.Color.Empty;
-            toggleState1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
-            toggleState1.BorderColorInner = System.Drawing.Color.Empty;
-            toggleState1.BorderRadius = 1;
-            toggleState1.BorderRadiusInner = 1;
-            toggleState1.BorderThickness = 1;
-            toggleState1.BorderThicknessInner = 1;
-            this.bunifuToggleSwitch_ENdLine.ToggleStateDisabled = toggleState1;
-            toggleState2.BackColor = System.Drawing.Color.Empty;
-            toggleState2.BackColorInner = System.Drawing.Color.Empty;
-            toggleState2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
-            toggleState2.BorderColorInner = System.Drawing.Color.Empty;
-            toggleState2.BorderRadius = 1;
-            toggleState2.BorderRadiusInner = 1;
-            toggleState2.BorderThickness = 1;
-            toggleState2.BorderThicknessInner = 1;
-            this.bunifuToggleSwitch_ENdLine.ToggleStateOff = toggleState2;
-            toggleState3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
-            toggleState3.BackColorInner = System.Drawing.Color.White;
-            toggleState3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
-            toggleState3.BorderColorInner = System.Drawing.Color.White;
-            toggleState3.BorderRadius = 17;
-            toggleState3.BorderRadiusInner = 15;
-            toggleState3.BorderThickness = 1;
-            toggleState3.BorderThicknessInner = 1;
-            this.bunifuToggleSwitch_ENdLine.ToggleStateOn = toggleState3;
+            toggleState16.BackColor = System.Drawing.Color.Empty;
+            toggleState16.BackColorInner = System.Drawing.Color.Empty;
+            toggleState16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            toggleState16.BorderColorInner = System.Drawing.Color.Empty;
+            toggleState16.BorderRadius = 1;
+            toggleState16.BorderRadiusInner = 1;
+            toggleState16.BorderThickness = 1;
+            toggleState16.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateDisabled = toggleState16;
+            toggleState17.BackColor = System.Drawing.Color.Empty;
+            toggleState17.BackColorInner = System.Drawing.Color.Empty;
+            toggleState17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            toggleState17.BorderColorInner = System.Drawing.Color.Empty;
+            toggleState17.BorderRadius = 1;
+            toggleState17.BorderRadiusInner = 1;
+            toggleState17.BorderThickness = 1;
+            toggleState17.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateOff = toggleState17;
+            toggleState18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            toggleState18.BackColorInner = System.Drawing.Color.White;
+            toggleState18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            toggleState18.BorderColorInner = System.Drawing.Color.White;
+            toggleState18.BorderRadius = 17;
+            toggleState18.BorderRadiusInner = 15;
+            toggleState18.BorderThickness = 1;
+            toggleState18.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateOn = toggleState18;
             this.bunifuToggleSwitch_ENdLine.Value = true;
             // 
             // Form1
@@ -592,11 +593,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Serial Port Terminal";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

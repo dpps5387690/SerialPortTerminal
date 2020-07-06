@@ -2758,18 +2758,6 @@
         RK5CYII=
 </value>
   </data>
-  <data name="bunifuToggleSwitch_ENdLine.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACMAAAATCAYAAAAao7T0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVEhLxZYtTwQxEIYrkUgc6GPK8TNQBIk7xLZLUPwE
-        PKIfkLMETYLDYpHIcyRYuIS78BkQxzt7TfjYCWbZ7iRPctlOp+9N25kqyfZ6x0tm1W8X5A9LHa6tDrOm
-        cBxDcVhot1P23Upa6m+DszHaj8FUCtoMPzMUHi35B6PDQVqyboO+WzTkryyFiRzof8FaT/jDIzFLSYg4
-        sU2QodvB8slCkjHfmlwZqUH+tdQxVkKqw4ozIjrmgvy46Ll1hRuzCzHPolNG+OYq/DjFvokOOeEzCzH+
-        RhrMDoUXzow82AG40uFeGsiP/+DMXHRRX37DBRBi3D56xpvkkA9uE3Go+H7jQzcF74uJJbdVFT6ugFwJ
-        BacsYIsuKyFs3Bu4R0iObYP6MuUukKTMrdou8neG3Ls0qQ1YiNFHm0nCT+NnhNXxHLeL3xtigObgsOKt
-        xBW3lhHJ7FrYwES0CT+qB2sCqj3FM35FpqW+mVKfYn4FUKfSRq0AAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="bunifuElipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -4590,4 +4578,16 @@
   <metadata name="bunifuFormDock1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>147, 17</value>
   </metadata>
+  <data name="bunifuToggleSwitch_ENdLine.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACMAAAATCAYAAAAao7T0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVEhLxZYtTwQxEIYrkUgc6GPK8TNQBIk7xLZLUPwE
+        PKIfkLMETYLDYpHIcyRYuIS78BkQxzt7TfjYCWbZ7iRPctlOp+9N25kqyfZ6x0tm1W8X5A9LHa6tDrOm
+        cBxDcVhot1P23Upa6m+DszHaj8FUCtoMPzMUHi35B6PDQVqyboO+WzTkryyFiRzof8FaT/jDIzFLSYg4
+        sU2QodvB8slCkjHfmlwZqUH+tdQxVkKqw4ozIjrmgvy46Ll1hRuzCzHPolNG+OYq/DjFvokOOeEzCzH+
+        RhrMDoUXzow82AG40uFeGsiP/+DMXHRRX37DBRBi3D56xpvkkA9uE3Go+H7jQzcF74uJJbdVFT6ugFwJ
+        BacsYIsuKyFs3Bu4R0iObYP6MuUukKTMrdou8neG3Ls0qQ1YiNFHm0nCT+NnhNXxHLeL3xtigObgsOKt
+        xBW3lhHJ7FrYwES0CT+qB2sCqj3FM35FpqW+mVKfYn4FUKfSRq0AAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

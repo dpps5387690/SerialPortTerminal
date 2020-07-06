@@ -67,90 +67,58 @@ namespace SerialPortTerminal
             m.Invoke(btn, p);
             return;
         }
-        //複寫From中的WndProc function
-        /// 
-        /// 監聽Windows狀態
-        /// 複寫WndProc方法，實現熱鍵監聽功能
-        /// 
-        /// 
-        [DllImport("user32.dll")]
-        private static extern Int32 GetForegroundWindow();
-        [DllImport("user32.dll")]
-        private static extern Int32 GetWindowText(Int32 hWnd, StringBuilder lpsb, Int32 count);
-        protected override void WndProc(ref Message m)
-        {
-            Int32 handle = 0;
-            StringBuilder sb = new StringBuilder(256);
-            handle = GetForegroundWindow();
-            if (GetWindowText(handle, sb, sb.Capacity) > 0)
-            {
-                Debug.WriteLine("視窗標題:" + sb.ToString());
-                if (sb.ToString() != "Serial Port Terminal")
-                {
-                    base.WndProc(ref m);
-                    return;
-                }
-            }
 
-
-            const int WM_HOTKEY = 0x0312;
-            //按下快捷鍵
-            switch (m.Msg)
-            {
-                case WM_HOTKEY:
-                    int ID = m.WParam.ToInt32();
-
-                    HotKeyClass hotKeyClass = HotName.Find(x => x.ID == ID);
-
-                    if (hotKeyClass.ControlName.Contains("bunifuImageButton"))
-                    {
-                        Control[] nowtb;
-                        nowtb = Controls.Find(hotKeyClass.ControlName, true);
-                        BunifuImageButton tileButton = null;
-
-                        tileButton = nowtb[0] as BunifuImageButton;
-                        callButtonEvent(tileButton, "OnClick");
-                    }
-                    else if(hotKeyClass.ControlName.Contains("bunifuMaterialTextbox"))
-                    {
-                        Control[] nowtb;
-                        nowtb = Controls.Find(hotKeyClass.ControlName, true);
-                        Bunifu.Framework.UI.BunifuMaterialTextbox textbox = null;
-
-                        textbox = nowtb[0] as Bunifu.Framework.UI.BunifuMaterialTextbox;
-                        textbox.Focus();
-                    }
-                    if (ID == 107)
-                        FindPrevious();
-
-                    break;
-            }
-            base.WndProc(ref m);
-        }
         List<HotKeyClass> HotName = new List<HotKeyClass>()
         {
-            new HotKeyClass("Start Serial",100,KeyModifiers.None,Keys.F10,"bunifuImageButton_StartStop"),
-            new HotKeyClass("refresh serial port",101,KeyModifiers.None,Keys.F5,"bunifuImageButton_ReFresh"),
-            new HotKeyClass("Save Log for View",102,KeyModifiers.Alt,Keys.S,"bunifuImageButton_Save"),
-            new HotKeyClass("Save Log Start",103,KeyModifiers.Alt,Keys.D,"bunifuImageButton_SaveLog"),
-            new HotKeyClass("Search",104,KeyModifiers.None,Keys.F3,"bunifuImageButton_Find"),
-            new HotKeyClass("Clear View",105,KeyModifiers.Alt,Keys.X,"bunifuImageButton_Clear"),
+            new HotKeyClass("Start Serial",100,Keys.None,Keys.F10,"bunifuImageButton_StartStop"),
+            new HotKeyClass("refresh serial port",101,Keys.None,Keys.F5,"bunifuImageButton_ReFresh"),
+            new HotKeyClass("Save Log for View",102,Keys.Control,Keys.S,"bunifuImageButton_Save"),
+            new HotKeyClass("Save Log Start",103,Keys.Alt,Keys.D,"bunifuImageButton_SaveLog"),
+            new HotKeyClass("Search",104,Keys.None,Keys.F3,"bunifuImageButton_Find"),
+            new HotKeyClass("Clear View",105,Keys.Alt,Keys.X,"bunifuImageButton_Clear"),
             //bunifuMaterialTextbox
-            new HotKeyClass("Search Text",106,KeyModifiers.Alt,Keys.F,"bunifuMaterialTextbox_Find"),
+            new HotKeyClass("Search Text",106,Keys.Control,Keys.F,"bunifuMaterialTextbox_Find"),
 
-            new HotKeyClass("Search Previous",107,KeyModifiers.Shift,Keys.F3,"Previous"),
+            new HotKeyClass("Search Previous",107,Keys.Shift,Keys.F3,"Previous"),
         };
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            HotKeyClass hotKeyClass = HotName.Find(x => x.keyModifiers == e.Modifiers && x.keys == e.KeyCode);
+            if (hotKeyClass == null)
+                return;
+            if (hotKeyClass.ControlName.Contains("bunifuImageButton"))
+            {
+                Control[] nowtb;
+                nowtb = Controls.Find(hotKeyClass.ControlName, true);
+                BunifuImageButton tileButton = null;
+
+                tileButton = nowtb[0] as BunifuImageButton;
+                callButtonEvent(tileButton, "OnClick");
+            }
+            else if (hotKeyClass.ControlName.Contains("bunifuMaterialTextbox"))
+            {
+                Control[] nowtb;
+                nowtb = Controls.Find(hotKeyClass.ControlName, true);
+                Bunifu.Framework.UI.BunifuMaterialTextbox textbox = null;
+
+                textbox = nowtb[0] as Bunifu.Framework.UI.BunifuMaterialTextbox;
+                textbox.Focus();
+            }
+            else if (hotKeyClass.ControlName == "Previous")
+                FindPrevious();
+
+        }
         private void HotKey_Init()
         {
             foreach (HotKeyClass hotKeyClass in HotName)
             {             
                 string keycomb = "";
                 Keys keynum = hotKeyClass.keys;
-                KeyModifiers keyModnum = hotKeyClass.keyModifiers;
+                Keys keyModnum = hotKeyClass.keyModifiers;
 
-                HotKey.RegisterHotKey(Handle, hotKeyClass.ID, keyModnum, keynum);
+                //HotKey.RegisterHotKey(Handle, hotKeyClass.ID, keyModnum, keynum);
 
-                if (hotKeyClass.keyModifiers != KeyModifiers.None)
+                if (hotKeyClass.keyModifiers != Keys.None)
                     keycomb = "(" + keyModnum + "-" + keynum + ")";
                 else
                     keycomb = "(" + keynum.ToString() + ")";
@@ -337,9 +305,6 @@ namespace SerialPortTerminal
 
             if (WriteLog != null)
                 WriteLog.Close();
-
-            foreach (HotKeyClass hotKeyClass in HotName)
-                HotKey.UnregisterHotKey(Handle, hotKeyClass.ID);
         }
         #region search
         int selectionStart = 0;
@@ -413,6 +378,12 @@ namespace SerialPortTerminal
             if (e.KeyCode == Keys.Enter)
                 FindNext();
         }
+
+        private void richTextBox_View_VScroll(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
