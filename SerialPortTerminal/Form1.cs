@@ -248,6 +248,9 @@ namespace SerialPortTerminal
                 bunifuImageButton_StartStop.Tag = "Start";
                 bunifuImageButton_StartStop.Image = Properties.Resources.play_96px;
 
+                if (readThread != null)
+                    readThread.Abort();
+
             }
         }
 
@@ -305,6 +308,9 @@ namespace SerialPortTerminal
 
             if (WriteLog != null)
                 WriteLog.Close();
+
+            if (readThread != null)
+                readThread.Abort();
         }
         #region search
         int selectionStart = 0;
