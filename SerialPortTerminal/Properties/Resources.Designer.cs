@@ -63,6 +63,16 @@ namespace SerialPortTerminal.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap _128_Resize_512 {
+            get {
+                object obj = ResourceManager.GetObject("_128_Resize_512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap broom_96px {
             get {
                 object obj = ResourceManager.GetObject("broom_96px", resourceCulture);

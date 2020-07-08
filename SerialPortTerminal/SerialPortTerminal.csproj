@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="log-512.ico" />
+    <None Include="Resources\128-Resize-512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -75,7 +75,7 @@ namespace SerialPortTerminal
             new HotKeyClass("Save Log for View",102,Keys.Control,Keys.S,"bunifuImageButton_Save"),
             new HotKeyClass("Save Log Start",103,Keys.Alt,Keys.D,"bunifuImageButton_SaveLog"),
             new HotKeyClass("Search",104,Keys.None,Keys.F3,"bunifuImageButton_Find"),
-            new HotKeyClass("Clear View",105,Keys.Alt,Keys.X,"bunifuImageButton_Clear"),
+            new HotKeyClass("Clear View",105,Keys.Control,Keys.X,"bunifuImageButton_Clear"),
             //bunifuMaterialTextbox
             new HotKeyClass("Search Text",106,Keys.Control,Keys.F,"bunifuMaterialTextbox_Find"),
 
@@ -141,6 +141,11 @@ namespace SerialPortTerminal
             InitSerialPortNum();
             bunifuDropdown__Speed.SelectedIndex = 6;
             HotKey_Init();
+            panel1.MakeDoubleBuffered(true);
+            panel2.MakeDoubleBuffered(true);
+            panel3.MakeDoubleBuffered(true);
+            panel4.MakeDoubleBuffered(true);
+            richTextBox_View.MakeDoubleBuffered(true);
         }
 
         private void bunifuImageButton_ReFresh_Click(object sender, EventArgs e)
@@ -188,6 +193,8 @@ namespace SerialPortTerminal
                         //以下這邊請自行撰寫你想要的例外處理
                     }
                 }
+                else
+                    Thread.Sleep(1);
             }
         }
         private void DisplayText(string buffer)
@@ -366,10 +373,34 @@ namespace SerialPortTerminal
             if (bunifuFormDock1.WindowState == Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized)
             {
                 bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Normal;
+                bunifuImageButton_Resize.Visible = true;
             }
             else
             {
                 bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized;
+                bunifuImageButton_Resize.Visible = false;
+            }
+        }
+
+        //None = 0,
+        //Left = 1,
+        //Right = 2,
+        //TopLeft = 3,
+        //TopRight = 4,
+        //FullScreen = 5,
+        //BottomLeft = 6,
+        //BottomRight = 7
+
+        private void bunifuFormDock1_DockChanged(object sender, BunifuFormDock.DockChangedEventArgs e)
+        {
+
+            if (e.DockPosition != BunifuFormDock.DockPositions.FullScreen)
+            {
+                bunifuImageButton_Resize.Visible = true;
+            }
+            else
+            {
+                bunifuImageButton_Resize.Visible = false;
             }
         }
 
@@ -389,7 +420,36 @@ namespace SerialPortTerminal
         {
 
         }
+        bool allowResize = false;
+        private void bunifuImageButton_Resize_MouseDown(object sender, MouseEventArgs e)
+        {
+            allowResize = true;
+        }
 
+        private void bunifuImageButton_Resize_MouseUp(object sender, MouseEventArgs e)
+        {
+            allowResize = false;
+        }
 
+        private void bunifuImageButton_Resize_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (allowResize)
+            {
+                var pos = this.PointToClient(Control.MousePosition);
+                this.Height = pos.Y;
+                this.Width = pos.X;
+            }
+        }
+    }
+
+    public static class ControlExtentions
+    {
+        public static void MakeDoubleBuffered(this Control control, bool setting)
+        {
+            Type controlType = control.GetType();
+            PropertyInfo pi = controlType.GetProperty("DoubleBuffered",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(control, setting, null);
+        }
     }
 }
