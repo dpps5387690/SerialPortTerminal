@@ -146,6 +146,22 @@ namespace SerialPortTerminal
             panel3.MakeDoubleBuffered(true);
             panel4.MakeDoubleBuffered(true);
             richTextBox_View.MakeDoubleBuffered(true);
+
+            //string str1 = "tCL\ttRCD/tRP\ttRAS\ttWR\ttCWL\ttRRD_S\ttRRD_L\ttWTR_S\ttWTR_L\ttRFC\ttRFC2\ttRFC4\ttRTP\ttFAW\tCMD_stretch\t\n";
+            //string str2 = "19\t26\t46\t24\t18\t9\t14\t3\t8\t842\t278\t171\t12\t53\t1\n";
+            //string str3 = "tRDRD_sg\ttRDRD_dg\ttRDRD_dr\ttRDRD_dd\t-tRDWR_sg\ttRDWR_dg\ttRDWR_dr\ttRDWR_dd\t-tWRWR_sg\ttWRWR_dg\ttWRWR_dr\ttWRWR_dd\t-tWRRD_sg\ttWRRD_dg\ttWRRD_dr\ttWRRD_dd\n";
+            //string str4 = "16\t16\t16\t16\t-16\t16\t16\t16\t-16\t16\t16\t16\t-16\t16\t16\t16\n\n";
+            List<int> css = new List<int>();
+
+            for (int width = 1; width < 33; width++)
+                css.Add(width * 90);
+
+            richTextBox_View.SelectionTabs = css.ToArray();
+
+            //richTextBox_View.AppendText(str1);
+            //richTextBox_View.AppendText(str2);
+            //richTextBox_View.AppendText(str3);
+            //richTextBox_View.AppendText(str4);
         }
 
         private void bunifuImageButton_ReFresh_Click(object sender, EventArgs e)
