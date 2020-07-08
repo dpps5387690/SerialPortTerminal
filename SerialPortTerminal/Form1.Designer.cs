@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Bunifu.ToggleSwitch.ToggleState toggleState4 = new Bunifu.ToggleSwitch.ToggleState();
-            Bunifu.ToggleSwitch.ToggleState toggleState5 = new Bunifu.ToggleSwitch.ToggleState();
-            Bunifu.ToggleSwitch.ToggleState toggleState6 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState1 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState2 = new Bunifu.ToggleSwitch.ToggleState();
+            Bunifu.ToggleSwitch.ToggleState toggleState3 = new Bunifu.ToggleSwitch.ToggleState();
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.bunifuDropdown__Speed = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuDropdown__PortNum = new Bunifu.UI.WinForms.BunifuDropdown();
@@ -287,33 +287,33 @@
             this.bunifuToggleSwitch_ENdLine.Name = "bunifuToggleSwitch_ENdLine";
             this.bunifuToggleSwitch_ENdLine.Size = new System.Drawing.Size(35, 19);
             this.bunifuToggleSwitch_ENdLine.TabIndex = 11;
-            toggleState4.BackColor = System.Drawing.Color.Empty;
-            toggleState4.BackColorInner = System.Drawing.Color.Empty;
-            toggleState4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
-            toggleState4.BorderColorInner = System.Drawing.Color.Empty;
-            toggleState4.BorderRadius = 1;
-            toggleState4.BorderRadiusInner = 1;
-            toggleState4.BorderThickness = 1;
-            toggleState4.BorderThicknessInner = 1;
-            this.bunifuToggleSwitch_ENdLine.ToggleStateDisabled = toggleState4;
-            toggleState5.BackColor = System.Drawing.Color.Empty;
-            toggleState5.BackColorInner = System.Drawing.Color.Empty;
-            toggleState5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
-            toggleState5.BorderColorInner = System.Drawing.Color.Empty;
-            toggleState5.BorderRadius = 1;
-            toggleState5.BorderRadiusInner = 1;
-            toggleState5.BorderThickness = 1;
-            toggleState5.BorderThicknessInner = 1;
-            this.bunifuToggleSwitch_ENdLine.ToggleStateOff = toggleState5;
-            toggleState6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
-            toggleState6.BackColorInner = System.Drawing.Color.White;
-            toggleState6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
-            toggleState6.BorderColorInner = System.Drawing.Color.White;
-            toggleState6.BorderRadius = 17;
-            toggleState6.BorderRadiusInner = 15;
-            toggleState6.BorderThickness = 1;
-            toggleState6.BorderThicknessInner = 1;
-            this.bunifuToggleSwitch_ENdLine.ToggleStateOn = toggleState6;
+            toggleState1.BackColor = System.Drawing.Color.Empty;
+            toggleState1.BackColorInner = System.Drawing.Color.Empty;
+            toggleState1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            toggleState1.BorderColorInner = System.Drawing.Color.Empty;
+            toggleState1.BorderRadius = 1;
+            toggleState1.BorderRadiusInner = 1;
+            toggleState1.BorderThickness = 1;
+            toggleState1.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateDisabled = toggleState1;
+            toggleState2.BackColor = System.Drawing.Color.Empty;
+            toggleState2.BackColorInner = System.Drawing.Color.Empty;
+            toggleState2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(0)))), ((int)(((byte)(140)))));
+            toggleState2.BorderColorInner = System.Drawing.Color.Empty;
+            toggleState2.BorderRadius = 1;
+            toggleState2.BorderRadiusInner = 1;
+            toggleState2.BorderThickness = 1;
+            toggleState2.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateOff = toggleState2;
+            toggleState3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            toggleState3.BackColorInner = System.Drawing.Color.White;
+            toggleState3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(45)))), ((int)(((byte)(145)))));
+            toggleState3.BorderColorInner = System.Drawing.Color.White;
+            toggleState3.BorderRadius = 17;
+            toggleState3.BorderRadiusInner = 15;
+            toggleState3.BorderThickness = 1;
+            toggleState3.BorderThicknessInner = 1;
+            this.bunifuToggleSwitch_ENdLine.ToggleStateOn = toggleState3;
             this.bunifuToggleSwitch_ENdLine.Value = true;
             // 
             // bunifuImageButton_SaveLog
@@ -620,6 +620,7 @@
             this.bunifuFormDock1.TitleBarOptions.DoubleClickToExpandWindow = true;
             this.bunifuFormDock1.TitleBarOptions.TitleBarControl = this.panel2;
             this.bunifuFormDock1.TitleBarOptions.UseBackColorOnDockingIndicators = false;
+            this.bunifuFormDock1.FormDragging += new System.EventHandler<Bunifu.UI.WinForms.BunifuFormDock.FormDraggingEventArgs>(this.bunifuFormDock1_FormDragging);
             this.bunifuFormDock1.DockChanged += new System.EventHandler<Bunifu.UI.WinForms.BunifuFormDock.DockChangedEventArgs>(this.bunifuFormDock1_DockChanged);
             // 
             // Form1

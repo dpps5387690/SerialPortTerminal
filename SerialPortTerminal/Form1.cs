@@ -403,6 +403,17 @@ namespace SerialPortTerminal
                 bunifuImageButton_Resize.Visible = false;
             }
         }
+        private void bunifuFormDock1_FormDragging(object sender, BunifuFormDock.FormDraggingEventArgs e)
+        {
+            if (e.ShownIndicator != BunifuFormDock.DockIndicators.FullScreen)
+            {
+                bunifuImageButton_Resize.Visible = true;
+            }
+            else
+            {
+                bunifuImageButton_Resize.Visible = false;
+            }
+        }
 
         private void bunifuTileButton__MinSize_Click(object sender, EventArgs e)
         {
