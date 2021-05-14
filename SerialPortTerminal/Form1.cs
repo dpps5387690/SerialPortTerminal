@@ -154,7 +154,7 @@ namespace SerialPortTerminal
             List<int> css = new List<int>();
 
             for (int width = 1; width < 33; width++)
-                css.Add(width * 90);
+                css.Add(width * 100);
 
             richTextBox_View.SelectionTabs = css.ToArray();
 
