@@ -77,10 +77,10 @@ jobs:
     - name: Run a multi-line script
       run: enigmavbconsole ${{ matrix.configuration }}.evb
       shell: cmd
-      working-directory: SerialPortTerminal/bin/x64/${{ matrix.configuration }}/
+      working-directory: SerialPortTerminal/bin/${{ matrix.configuration }}/
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: SPDEmpire_${{ matrix.configuration }}_${{ github.run_number }}
-        path: SerialPortTerminal/bin/x64/${{ matrix.configuration }}/out 
+        path: SerialPortTerminal/bin/${{ matrix.configuration }}/out 
