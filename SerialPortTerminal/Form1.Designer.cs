@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -42,6 +43,7 @@
             this.checkBox_ENdLine = new System.Windows.Forms.CheckBox();
             this.comboBox_PortNum = new System.Windows.Forms.ComboBox();
             this.comboBox_Speed = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -287,6 +289,7 @@
         private System.Windows.Forms.CheckBox checkBox_ENdLine;
         private System.Windows.Forms.ComboBox comboBox_PortNum;
         private System.Windows.Forms.ComboBox comboBox_Speed;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

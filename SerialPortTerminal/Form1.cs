@@ -1,5 +1,4 @@
-﻿using Bunifu.UI.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,10 +49,10 @@ namespace SerialPortTerminal
             }
         }
         #region HotKey       
-        private void callButtonEvent(BunifuImageButton btn, string EventName)
+        private void callButtonEvent(Button btn, string EventName)
         {
             //建立一個型別      
-            Type t = typeof(BunifuImageButton);
+            Type t = typeof(Button);
             //引數物件      
             object[] p = new object[1];
             //產生方法      
@@ -70,14 +69,14 @@ namespace SerialPortTerminal
 
         List<HotKeyClass> HotName = new List<HotKeyClass>()
         {
-            new HotKeyClass("Start Serial",100,Keys.None,Keys.F10,"bunifuImageButton_StartStop"),
-            new HotKeyClass("refresh serial port",101,Keys.None,Keys.F5,"bunifuImageButton_ReFresh"),
-            new HotKeyClass("Save Log for View",102,Keys.Control,Keys.S,"bunifuImageButton_Save"),
-            new HotKeyClass("Save Log Start",103,Keys.Alt,Keys.D,"bunifuImageButton_SaveLog"),
-            new HotKeyClass("Search",104,Keys.None,Keys.F3,"bunifuImageButton_Find"),
-            new HotKeyClass("Clear View",105,Keys.Control,Keys.X,"bunifuImageButton_Clear"),
+            new HotKeyClass("Start Serial Port",100,Keys.None,Keys.F10,"button_StartStop"),
+            new HotKeyClass("Refresh Serial Port",101,Keys.None,Keys.F5,"button_ReFresh"),
+            new HotKeyClass("Save Log for View",102,Keys.Control,Keys.S,"button_Save"),
+            new HotKeyClass("Save Log Start",103,Keys.Alt,Keys.D,"button_SaveLog"),
+            new HotKeyClass("Search",104,Keys.None,Keys.F3,"button_Find"),
+            new HotKeyClass("Clear View",105,Keys.Control,Keys.X,"button_Clear"),
             //bunifuMaterialTextbox
-            new HotKeyClass("Search Text",106,Keys.Control,Keys.F,"bunifuMaterialTextbox_Find"),
+            new HotKeyClass("Search Text",106,Keys.Control,Keys.F,"underLineTextBox_Find"),
 
             new HotKeyClass("Search Previous",107,Keys.Shift,Keys.F3,"Previous"),
         };
@@ -86,22 +85,22 @@ namespace SerialPortTerminal
             HotKeyClass hotKeyClass = HotName.Find(x => x.keyModifiers == e.Modifiers && x.keys == e.KeyCode);
             if (hotKeyClass == null)
                 return;
-            if (hotKeyClass.ControlName.Contains("bunifuImageButton"))
+            if (hotKeyClass.ControlName.Contains("button"))
             {
                 Control[] nowtb;
                 nowtb = Controls.Find(hotKeyClass.ControlName, true);
-                BunifuImageButton tileButton = null;
+                Button tileButton = null;
 
-                tileButton = nowtb[0] as BunifuImageButton;
+                tileButton = nowtb[0] as Button;
                 callButtonEvent(tileButton, "OnClick");
             }
-            else if (hotKeyClass.ControlName.Contains("bunifuMaterialTextbox"))
+            else if (hotKeyClass.ControlName.Contains("underLineTextBox"))
             {
                 Control[] nowtb;
                 nowtb = Controls.Find(hotKeyClass.ControlName, true);
-                Bunifu.Framework.UI.BunifuMaterialTextbox textbox = null;
+                UnderLineTextBox textbox = null;
 
-                textbox = nowtb[0] as Bunifu.Framework.UI.BunifuMaterialTextbox;
+                textbox = nowtb[0] as UnderLineTextBox;
                 textbox.Focus();
             }
             else if (hotKeyClass.ControlName == "Previous")
@@ -123,16 +122,17 @@ namespace SerialPortTerminal
                 else
                     keycomb = "(" + keynum.ToString() + ")";
 
-                if (hotKeyClass.ControlName.Contains("bunifuImageButton"))
+                if (hotKeyClass.ControlName.Contains("button"))
                 {
                     Control[] nowtb;
                     nowtb = Controls.Find(hotKeyClass.ControlName, true);
                     if (nowtb.Count() != 0)
                     {
-                        BunifuImageButton tileButton = null;
+                        Button tileButton = null;
 
-                        tileButton = nowtb[0] as BunifuImageButton;
-                        tileButton.ToolTipText += keycomb;
+                        tileButton = nowtb[0] as Button;
+
+                        toolTip1.SetToolTip(tileButton, hotKeyClass.IniName + keycomb);
                     }
                 }
 
