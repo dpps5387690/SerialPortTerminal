@@ -142,8 +142,6 @@ namespace SerialPortTerminal
             bunifuDropdown__Speed.SelectedIndex = 6;
             HotKey_Init();
             panel1.MakeDoubleBuffered(true);
-            panel2.MakeDoubleBuffered(true);
-            panel3.MakeDoubleBuffered(true);
             panel4.MakeDoubleBuffered(true);
             richTextBox_View.MakeDoubleBuffered(true);
 
@@ -383,66 +381,11 @@ namespace SerialPortTerminal
         {
             Application.Exit();
         }
-
-        private void bunifuTileButton_MaxSize_Click(object sender, EventArgs e)
-        {
-            if (bunifuFormDock1.WindowState == Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized)
-            {
-                bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Normal;
-                bunifuImageButton_Resize.Visible = true;
-            }
-            else
-            {
-                bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Maximized;
-                bunifuImageButton_Resize.Visible = false;
-            }
-        }
-
-        //None = 0,
-        //Left = 1,
-        //Right = 2,
-        //TopLeft = 3,
-        //TopRight = 4,
-        //FullScreen = 5,
-        //BottomLeft = 6,
-        //BottomRight = 7
-
-        private void bunifuFormDock1_DockChanged(object sender, BunifuFormDock.DockChangedEventArgs e)
-        {
-
-            if (e.DockPosition != BunifuFormDock.DockPositions.FullScreen)
-            {
-                bunifuImageButton_Resize.Visible = true;
-            }
-            else
-            {
-                bunifuImageButton_Resize.Visible = false;
-            }
-        }
-        private void bunifuFormDock1_FormDragging(object sender, BunifuFormDock.FormDraggingEventArgs e)
-        {
-            if (e.ShownIndicator != BunifuFormDock.DockIndicators.FullScreen)
-            {
-                bunifuImageButton_Resize.Visible = true;
-            }
-            else
-            {
-                bunifuImageButton_Resize.Visible = false;
-            }
-        }
-
-        private void bunifuTileButton__MinSize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-            bunifuFormDock1.WindowState = Bunifu.UI.WinForms.BunifuFormDock.FormWindowStates.Minimized;
-        }
-
         private void bunifuMaterialTextbox_Find_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 FindNext();
         }
-
         private void richTextBox_View_VScroll(object sender, EventArgs e)
         {
 
