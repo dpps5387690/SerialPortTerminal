@@ -82,5 +82,5 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: SPDEmpire_${{ matrix.configuration }}_${{ github.run_number }}
+        name: SerialPortTerminal_${{ matrix.configuration }}_${{ github.run_number }}
         path: SerialPortTerminal/bin/${{ matrix.configuration }}/out 
