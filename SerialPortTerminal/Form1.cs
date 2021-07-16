@@ -33,20 +33,20 @@ namespace SerialPortTerminal
             // Get a list of serial port names.
             string[] ports = SerialPort.GetPortNames();
             // Display each port name to the console.
-            bunifuDropdown__PortNum.Items.Clear();
+            comboBox_PortNum.Items.Clear();
             foreach (string port in ports)
             {
                 Console.WriteLine(port);
-                bunifuDropdown__PortNum.Items.Add(port);
+                comboBox_PortNum.Items.Add(port);
             }
             if (ports.Count() == 0)
             {
-                bunifuDropdown__PortNum.Enabled = false;
+                comboBox_PortNum.Enabled = false;
             }
             else
             {
-                bunifuDropdown__PortNum.SelectedIndex = 0;
-                bunifuDropdown__PortNum.Enabled = true;
+                comboBox_PortNum.SelectedIndex = 0;
+                comboBox_PortNum.Enabled = true;
             }
         }
         #region HotKey       
@@ -127,10 +127,13 @@ namespace SerialPortTerminal
                 {
                     Control[] nowtb;
                     nowtb = Controls.Find(hotKeyClass.ControlName, true);
-                    BunifuImageButton tileButton = null;
+                    if (nowtb.Count() != 0)
+                    {
+                        BunifuImageButton tileButton = null;
 
-                    tileButton = nowtb[0] as BunifuImageButton;
-                    tileButton.ToolTipText += keycomb;
+                        tileButton = nowtb[0] as BunifuImageButton;
+                        tileButton.ToolTipText += keycomb;
+                    }
                 }
 
             }
@@ -139,7 +142,7 @@ namespace SerialPortTerminal
         private void Form1_Load(object sender, EventArgs e)
         {
             InitSerialPortNum();
-            bunifuDropdown__Speed.SelectedIndex = 6;
+            comboBox_Speed.SelectedIndex = 6;
             HotKey_Init();
             panel1.MakeDoubleBuffered(true);
             panel4.MakeDoubleBuffered(true);
@@ -173,8 +176,8 @@ namespace SerialPortTerminal
             _serialPort = new SerialPort();
 
             // Allow the user to set the appropriate properties.
-            _serialPort.PortName = bunifuDropdown__PortNum.Text;
-            _serialPort.BaudRate = Convert.ToInt32(bunifuDropdown__Speed.Text);
+            _serialPort.PortName = comboBox_PortNum.Text;
+            _serialPort.BaudRate = Convert.ToInt32(comboBox_Speed.Text);
             _serialPort.Parity = Parity.None;
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
@@ -217,7 +220,7 @@ namespace SerialPortTerminal
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
             richTextBox_View.AppendText(buffer.Replace("\r\n", "\n"));
-            if (bunifuToggleSwitch_ENdLine.Value)
+            if (checkBox_ENdLine.Checked)
             {
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
                 richTextBox_View.ScrollToCaret();
@@ -225,7 +228,7 @@ namespace SerialPortTerminal
         }
         private void bunifuImageButton_StartStop_Click(object sender, EventArgs e)
         {
-            if (bunifuDropdown__PortNum.Items.Count < 1)
+            if (comboBox_PortNum.Items.Count < 1)
             {
                 const string message =
                     "Please connent Debug Card and enter SerialPort to Reflash.";
@@ -238,15 +241,15 @@ namespace SerialPortTerminal
             }
 
 
-            if (bunifuImageButton_StartStop.Tag.ToString() == "Start")
+            if (button_StartStop.Tag.ToString() == "Start")
             {
                 readThread = new Thread(comport_DataReceived);
                 serial_OPEN();
                 try
                 {
                     _serialPort.Open();//開啟serial
-                    bunifuImageButton_StartStop.Tag = "Stop";
-                    bunifuImageButton_StartStop.Image = Properties.Resources.pause_90px;
+                    button_StartStop.Tag = "Stop";
+                    button_StartStop.BackgroundImage = Properties.Resources.pause_90px;
                     _continue = true;
                     readThread.Start();
                     readThread.IsBackground = true;//thread 背景執行  
@@ -258,7 +261,7 @@ namespace SerialPortTerminal
                 }
 
             }
-            else if (bunifuImageButton_StartStop.Tag.ToString() == "Stop")
+            else if (button_StartStop.Tag.ToString() == "Stop")
             {
                 _continue = false;//停止thread
                 _serialPort.Close();//關閉serial port
@@ -266,8 +269,8 @@ namespace SerialPortTerminal
                 if (WriteLog != null)
                     WriteLog.Close();
 
-                bunifuImageButton_StartStop.Tag = "Start";
-                bunifuImageButton_StartStop.Image = Properties.Resources.play_96px;
+                button_StartStop.Tag = "Start";
+                button_StartStop.BackgroundImage = Properties.Resources.play_96px;
 
                 if (readThread != null)
                     readThread.Abort();
@@ -301,20 +304,20 @@ namespace SerialPortTerminal
         private void bunifuImageButton_SaveLog_Click(object sender, EventArgs e)
         {
 
-            if (bunifuImageButton_SaveLog.Tag.ToString() == "SaveStart")
+            if (button_SaveLog.Tag.ToString() == "SaveStart")
             {
                 DialogResult dialogResult = SaveFile();
                 if (dialogResult == DialogResult.OK)
                 {
-                    bunifuImageButton_SaveLog.Tag = "SaveStop";
-                    bunifuImageButton_SaveLog.Image = Properties.Resources.close_window_96px;
+                    button_SaveLog.Tag = "SaveStop";
+                    button_SaveLog.Image = Properties.Resources.close_window_96px;
                     WriteLog = new StreamWriter(File.Open(saveFile.FileName, FileMode.Create));
                 }
             }
-            else if (bunifuImageButton_SaveLog.Tag.ToString() == "SaveStop")
+            else if (button_SaveLog.Tag.ToString() == "SaveStop")
             {
-                bunifuImageButton_SaveLog.Tag = "SaveStart";
-                bunifuImageButton_SaveLog.Image = Properties.Resources.save_as_96px;
+                button_SaveLog.Tag = "SaveStart";
+                button_SaveLog.Image = Properties.Resources.save_as_96px;
                 WriteLog.Close();
                 WriteLog = null;
             }
@@ -345,7 +348,7 @@ namespace SerialPortTerminal
             }
             else
             {
-                selectionStop = selectionStart + bunifuMaterialTextbox_Find.Text.Length;
+                selectionStop = selectionStart + underLineTextBox_Find.Text.Length;
                 richTextBox_View.SelectionBackColor = Color.Yellow;
                 richTextBox_View.Focus();
             }
@@ -354,14 +357,14 @@ namespace SerialPortTerminal
         private void FindNext()
         {
             richTextBox_View.SelectionBackColor = Color.White;
-            selectionStart = richTextBox_View.Find(bunifuMaterialTextbox_Find.Text, selectionStop, richTextBox_View.TextLength, RichTextBoxFinds.None);
+            selectionStart = richTextBox_View.Find(underLineTextBox_Find.Text, selectionStop, richTextBox_View.TextLength, RichTextBoxFinds.None);
             ShowFind();
         }
 
         private void FindPrevious()
         {
             richTextBox_View.SelectionBackColor = Color.White;
-            selectionStart = richTextBox_View.Find(bunifuMaterialTextbox_Find.Text, 0, selectionStart, RichTextBoxFinds.Reverse);
+            selectionStart = richTextBox_View.Find(underLineTextBox_Find.Text, 0, selectionStart, RichTextBoxFinds.Reverse);
             ShowFind();
         }
         #endregion
@@ -373,8 +376,8 @@ namespace SerialPortTerminal
 
         private void bunifuMaterialTextbox_Find_OnValueChanged(object sender, EventArgs e)
         {
-            if (bunifuToggleSwitch_ENdLine.Value)
-                bunifuToggleSwitch_ENdLine.Value = false;
+            if (checkBox_ENdLine.Checked)
+                checkBox_ENdLine.Checked = false;
         }
 
         private void bunifuTileButton_Close_Click(object sender, EventArgs e)
@@ -385,6 +388,8 @@ namespace SerialPortTerminal
         {
             if (e.KeyCode == Keys.Enter)
                 FindNext();
+            if (checkBox_ENdLine.Checked)
+                checkBox_ENdLine.Checked = false;
         }
         private void richTextBox_View_VScroll(object sender, EventArgs e)
         {
