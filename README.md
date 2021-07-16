@@ -1,4 +1,4 @@
 # SerialPortTerminal
 Serial Port Show
 
-[![Build Status](https://dev.azure.com/BIOSTool/SerialPortTerminal/_apis/build/status/dpps5387690.SerialPortTerminal?branchName=master)](https://dev.azure.com/BIOSTool/SerialPortTerminal/_build/latest?definitionId=13&branchName=master)
+[![.NET Framework](https://github.com/dpps5387690/SerialPortTerminal/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/dpps5387690/SerialPortTerminal/actions/workflows/dotnet-desktop.yml)
