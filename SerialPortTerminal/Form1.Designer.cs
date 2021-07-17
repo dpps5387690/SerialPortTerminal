@@ -216,11 +216,6 @@
             this.comboBox_PortNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox_PortNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_PortNum.FormattingEnabled = true;
-            this.comboBox_PortNum.Items.AddRange(new object[] {
-            "DIMM0",
-            "DIMM1",
-            "DIMM2",
-            "DIMM3"});
             this.comboBox_PortNum.Location = new System.Drawing.Point(3, 1);
             this.comboBox_PortNum.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.comboBox_PortNum.Name = "comboBox_PortNum";
