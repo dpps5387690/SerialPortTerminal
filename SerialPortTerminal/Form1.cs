@@ -374,16 +374,6 @@ namespace SerialPortTerminal
             FindNext();
         }
 
-        private void bunifuMaterialTextbox_Find_OnValueChanged(object sender, EventArgs e)
-        {
-            if (checkBox_ENdLine.Checked)
-                checkBox_ENdLine.Checked = false;
-        }
-
-        private void bunifuTileButton_Close_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         private void bunifuMaterialTextbox_Find_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
