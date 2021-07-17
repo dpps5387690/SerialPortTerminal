@@ -395,26 +395,6 @@ namespace SerialPortTerminal
         {
 
         }
-        bool allowResize = false;
-        private void bunifuImageButton_Resize_MouseDown(object sender, MouseEventArgs e)
-        {
-            allowResize = true;
-        }
-
-        private void bunifuImageButton_Resize_MouseUp(object sender, MouseEventArgs e)
-        {
-            allowResize = false;
-        }
-
-        private void bunifuImageButton_Resize_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (allowResize)
-            {
-                var pos = this.PointToClient(Control.MousePosition);
-                this.Height = pos.Y;
-                this.Width = pos.X;
-            }
-        }
     }
 
     public static class ControlExtentions
