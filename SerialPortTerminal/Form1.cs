@@ -186,33 +186,37 @@ namespace SerialPortTerminal
             //_serialPort.DataReceived += new SerialDataReceivedEventHandler(comport_DataReceived);
             //_serialPort.WriteTimeout = 500;
         }
+        delegate void bunifuImageButton_StartStop_Click_Delegate(object sender, EventArgs e);
         private void comport_DataReceived()
         {
             while (_continue)
             {
-                if (_serialPort.BytesToRead > 0)
+                try
                 {
-                    try
+                    if (_serialPort.BytesToRead > 0)
                     {
+
                         string buffer = _serialPort.ReadExisting();
 
                         Display d = new Display(DisplayText);
                         this.Invoke(d, new Object[] { buffer });//使用委託的方式操作control
-                        //this.BeginInvoke(d, new Object[] { buffer });//使用委託的方式操作control
-                        //Thread.Sleep(1);
+                                                                //this.BeginInvoke(d, new Object[] { buffer });//使用委託的方式操作control
+                                                                //Thread.Sleep(1);
                     }
-                    //catch (TimeoutException timeoutEx)
-                    //{
-                    //    //以下這邊請自行撰寫你想要的例外處理
-                    //}
-                    catch (Exception ex)
-                    {
-                        //以下這邊請自行撰寫你想要的例外處理
-                    }
+                    else
+                        Thread.Sleep(1);
                 }
-                else
-                    Thread.Sleep(1);
-            }
+                catch (TimeoutException timeoutEx)
+                {
+                    //以下這邊請自行撰寫你想要的例外處理
+                    this.Invoke(new bunifuImageButton_StartStop_Click_Delegate(this.bunifuImageButton_StartStop_Click), button_StartStop, null);
+                }
+                catch (Exception ex)
+                {
+                    //以下這邊請自行撰寫你想要的例外處理
+                    this.Invoke(new bunifuImageButton_StartStop_Click_Delegate(this.bunifuImageButton_StartStop_Click), button_StartStop, null);
+                }
+        }
         }
         private void DisplayText(string buffer)
         {

@@ -32,17 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox_Speed = new System.Windows.Forms.ComboBox();
+            this.comboBox_PortNum = new System.Windows.Forms.ComboBox();
+            this.checkBox_ENdLine = new System.Windows.Forms.CheckBox();
+            this.underLineTextBox_Find = new SerialPortTerminal.UnderLineTextBox();
             this.button_SaveLog = new System.Windows.Forms.Button();
+            this.button_Find = new System.Windows.Forms.Button();
+            this.button_Clear = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.button_ReFresh = new System.Windows.Forms.Button();
             this.button_StartStop = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.underLineTextBox_Find = new SerialPortTerminal.UnderLineTextBox();
-            this.button_Find = new System.Windows.Forms.Button();
-            this.button_Clear = new System.Windows.Forms.Button();
-            this.checkBox_ENdLine = new System.Windows.Forms.CheckBox();
-            this.comboBox_PortNum = new System.Windows.Forms.ComboBox();
-            this.comboBox_Speed = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,6 +81,62 @@
             this.panel4.Size = new System.Drawing.Size(1010, 55);
             this.panel4.TabIndex = 33;
             // 
+            // comboBox_Speed
+            // 
+            this.comboBox_Speed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Speed.FormattingEnabled = true;
+            this.comboBox_Speed.Items.AddRange(new object[] {
+            "300",
+            "2400",
+            "4800",
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200"});
+            this.comboBox_Speed.Location = new System.Drawing.Point(3, 28);
+            this.comboBox_Speed.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.comboBox_Speed.Name = "comboBox_Speed";
+            this.comboBox_Speed.Size = new System.Drawing.Size(120, 27);
+            this.comboBox_Speed.TabIndex = 15;
+            this.comboBox_Speed.Tag = "SMBUS_Select";
+            // 
+            // comboBox_PortNum
+            // 
+            this.comboBox_PortNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_PortNum.FormattingEnabled = true;
+            this.comboBox_PortNum.Location = new System.Drawing.Point(3, 1);
+            this.comboBox_PortNum.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.comboBox_PortNum.Name = "comboBox_PortNum";
+            this.comboBox_PortNum.Size = new System.Drawing.Size(120, 27);
+            this.comboBox_PortNum.TabIndex = 15;
+            this.comboBox_PortNum.Tag = "SMBUS_Select";
+            // 
+            // checkBox_ENdLine
+            // 
+            this.checkBox_ENdLine.AutoSize = true;
+            this.checkBox_ENdLine.Checked = true;
+            this.checkBox_ENdLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_ENdLine.Location = new System.Drawing.Point(571, 30);
+            this.checkBox_ENdLine.Name = "checkBox_ENdLine";
+            this.checkBox_ENdLine.Size = new System.Drawing.Size(81, 23);
+            this.checkBox_ENdLine.TabIndex = 14;
+            this.checkBox_ENdLine.Text = "ENdLine";
+            this.checkBox_ENdLine.UseVisualStyleBackColor = true;
+            // 
+            // underLineTextBox_Find
+            // 
+            this.underLineTextBox_Find.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.underLineTextBox_Find.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.underLineTextBox_Find.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.underLineTextBox_Find.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.underLineTextBox_Find.Location = new System.Drawing.Point(353, 31);
+            this.underLineTextBox_Find.MaxLength = 50;
+            this.underLineTextBox_Find.Name = "underLineTextBox_Find";
+            this.underLineTextBox_Find.Size = new System.Drawing.Size(100, 22);
+            this.underLineTextBox_Find.TabIndex = 13;
+            this.underLineTextBox_Find.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuMaterialTextbox_Find_KeyDown);
+            // 
             // button_SaveLog
             // 
             this.button_SaveLog.BackColor = System.Drawing.Color.Gray;
@@ -96,6 +152,38 @@
             this.button_SaveLog.Tag = "SaveStart";
             this.button_SaveLog.UseVisualStyleBackColor = false;
             this.button_SaveLog.Click += new System.EventHandler(this.bunifuImageButton_SaveLog_Click);
+            // 
+            // button_Find
+            // 
+            this.button_Find.BackColor = System.Drawing.Color.Gray;
+            this.button_Find.BackgroundImage = global::SerialPortTerminal.Properties.Resources.search_96px;
+            this.button_Find.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_Find.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button_Find.FlatAppearance.BorderSize = 0;
+            this.button_Find.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Find.Location = new System.Drawing.Point(459, 3);
+            this.button_Find.Name = "button_Find";
+            this.button_Find.Size = new System.Drawing.Size(50, 50);
+            this.button_Find.TabIndex = 12;
+            this.button_Find.Tag = "";
+            this.button_Find.UseVisualStyleBackColor = false;
+            this.button_Find.Click += new System.EventHandler(this.bunifuImageButton_Find_Click);
+            // 
+            // button_Clear
+            // 
+            this.button_Clear.BackColor = System.Drawing.Color.Gray;
+            this.button_Clear.BackgroundImage = global::SerialPortTerminal.Properties.Resources.broom_96px;
+            this.button_Clear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_Clear.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button_Clear.FlatAppearance.BorderSize = 0;
+            this.button_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Clear.Location = new System.Drawing.Point(515, 3);
+            this.button_Clear.Name = "button_Clear";
+            this.button_Clear.Size = new System.Drawing.Size(50, 50);
+            this.button_Clear.TabIndex = 12;
+            this.button_Clear.Tag = "";
+            this.button_Clear.UseVisualStyleBackColor = false;
+            this.button_Clear.Click += new System.EventHandler(this.bunifuImageButton_Clear_Click);
             // 
             // button_Save
             // 
@@ -153,96 +241,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1010, 588);
             this.panel1.TabIndex = 35;
-            // 
-            // underLineTextBox_Find
-            // 
-            this.underLineTextBox_Find.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.underLineTextBox_Find.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.underLineTextBox_Find.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.underLineTextBox_Find.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.underLineTextBox_Find.Location = new System.Drawing.Point(353, 31);
-            this.underLineTextBox_Find.MaxLength = 50;
-            this.underLineTextBox_Find.Name = "underLineTextBox_Find";
-            this.underLineTextBox_Find.Size = new System.Drawing.Size(100, 22);
-            this.underLineTextBox_Find.TabIndex = 13;
-            this.underLineTextBox_Find.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuMaterialTextbox_Find_KeyDown);
-            // 
-            // button_Find
-            // 
-            this.button_Find.BackColor = System.Drawing.Color.Gray;
-            this.button_Find.BackgroundImage = global::SerialPortTerminal.Properties.Resources.search_96px;
-            this.button_Find.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_Find.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button_Find.FlatAppearance.BorderSize = 0;
-            this.button_Find.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Find.Location = new System.Drawing.Point(459, 3);
-            this.button_Find.Name = "button_Find";
-            this.button_Find.Size = new System.Drawing.Size(50, 50);
-            this.button_Find.TabIndex = 12;
-            this.button_Find.Tag = "";
-            this.button_Find.UseVisualStyleBackColor = false;
-            this.button_Find.Click += new System.EventHandler(this.bunifuImageButton_Find_Click);
-            // 
-            // button_Clear
-            // 
-            this.button_Clear.BackColor = System.Drawing.Color.Gray;
-            this.button_Clear.BackgroundImage = global::SerialPortTerminal.Properties.Resources.broom_96px;
-            this.button_Clear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_Clear.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button_Clear.FlatAppearance.BorderSize = 0;
-            this.button_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Clear.Location = new System.Drawing.Point(515, 3);
-            this.button_Clear.Name = "button_Clear";
-            this.button_Clear.Size = new System.Drawing.Size(50, 50);
-            this.button_Clear.TabIndex = 12;
-            this.button_Clear.Tag = "";
-            this.button_Clear.UseVisualStyleBackColor = false;
-            this.button_Clear.Click += new System.EventHandler(this.bunifuImageButton_Clear_Click);
-            // 
-            // checkBox_ENdLine
-            // 
-            this.checkBox_ENdLine.AutoSize = true;
-            this.checkBox_ENdLine.Checked = true;
-            this.checkBox_ENdLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_ENdLine.Location = new System.Drawing.Point(571, 30);
-            this.checkBox_ENdLine.Name = "checkBox_ENdLine";
-            this.checkBox_ENdLine.Size = new System.Drawing.Size(81, 23);
-            this.checkBox_ENdLine.TabIndex = 14;
-            this.checkBox_ENdLine.Text = "ENdLine";
-            this.checkBox_ENdLine.UseVisualStyleBackColor = true;
-            // 
-            // comboBox_PortNum
-            // 
-            this.comboBox_PortNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_PortNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_PortNum.FormattingEnabled = true;
-            this.comboBox_PortNum.Location = new System.Drawing.Point(3, 1);
-            this.comboBox_PortNum.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.comboBox_PortNum.Name = "comboBox_PortNum";
-            this.comboBox_PortNum.Size = new System.Drawing.Size(120, 27);
-            this.comboBox_PortNum.TabIndex = 15;
-            this.comboBox_PortNum.Tag = "SMBUS_Select";
-            // 
-            // comboBox_Speed
-            // 
-            this.comboBox_Speed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_Speed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Speed.FormattingEnabled = true;
-            this.comboBox_Speed.Items.AddRange(new object[] {
-            "300",
-            "2400",
-            "4800",
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
-            this.comboBox_Speed.Location = new System.Drawing.Point(3, 28);
-            this.comboBox_Speed.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.comboBox_Speed.Name = "comboBox_Speed";
-            this.comboBox_Speed.Size = new System.Drawing.Size(120, 27);
-            this.comboBox_Speed.TabIndex = 15;
-            this.comboBox_Speed.Tag = "SMBUS_Select";
             // 
             // Form1
             // 
