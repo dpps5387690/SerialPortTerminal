@@ -206,15 +206,15 @@ namespace SerialPortTerminal
                     else
                         Thread.Sleep(1);
                 }
-                catch (TimeoutException timeoutEx)
-                {
-                    //以下這邊請自行撰寫你想要的例外處理
-                    this.Invoke(new bunifuImageButton_StartStop_Click_Delegate(this.bunifuImageButton_StartStop_Click), button_StartStop, null);
-                }
                 catch (Exception ex)
                 {
                     //以下這邊請自行撰寫你想要的例外處理
-                    this.Invoke(new bunifuImageButton_StartStop_Click_Delegate(this.bunifuImageButton_StartStop_Click), button_StartStop, null);
+                    button_StartStop.Invoke((MethodInvoker)(() =>
+                    {
+                        button_StartStop.Tag = "Stop";
+                        button_StartStop.BackgroundImage = Properties.Resources.pause_90px;
+                    }));
+                    bunifuImageButton_StartStop_Click(button_StartStop, null);                    
                 }
         }
         }
@@ -232,6 +232,8 @@ namespace SerialPortTerminal
         }
         private void bunifuImageButton_StartStop_Click(object sender, EventArgs e)
         {
+            Button button = sender as Button;
+
             if (comboBox_PortNum.Items.Count < 1)
             {
                 const string message =
@@ -252,8 +254,11 @@ namespace SerialPortTerminal
                 try
                 {
                     _serialPort.Open();//開啟serial
-                    button_StartStop.Tag = "Stop";
-                    button_StartStop.BackgroundImage = Properties.Resources.pause_90px;
+                    button.Invoke((MethodInvoker)(() =>
+                    {
+                        button.Tag = "Stop";
+                        button.BackgroundImage = Properties.Resources.pause_90px;
+                    }));
                     _continue = true;
                     readThread.Start();
                     readThread.IsBackground = true;//thread 背景執行  
@@ -273,8 +278,11 @@ namespace SerialPortTerminal
                 if (WriteLog != null)
                     WriteLog.Close();
 
-                button_StartStop.Tag = "Start";
-                button_StartStop.BackgroundImage = Properties.Resources.play_96px;
+                button.Invoke((MethodInvoker)(() =>
+                {
+                    button.Tag = "Start";
+                    button.BackgroundImage = Properties.Resources.play_96px;
+                }));
 
                 if (readThread != null)
                     readThread.Abort();
