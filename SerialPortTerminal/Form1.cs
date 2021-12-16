@@ -186,7 +186,6 @@ namespace SerialPortTerminal
             //_serialPort.DataReceived += new SerialDataReceivedEventHandler(comport_DataReceived);
             //_serialPort.WriteTimeout = 500;
         }
-        delegate void bunifuImageButton_StartStop_Click_Delegate(object sender, EventArgs e);
         private void comport_DataReceived()
         {
             while (_continue)
@@ -201,10 +200,12 @@ namespace SerialPortTerminal
                         Display d = new Display(DisplayText);
                         this.Invoke(d, new Object[] { buffer });//使用委託的方式操作control
                                                                 //this.BeginInvoke(d, new Object[] { buffer });//使用委託的方式操作control
-                                                                //Thread.Sleep(1);
+                                                                //Thread.Sleep(1);                        
                     }
-                    else
-                        Thread.Sleep(1);
+
+                    SpinWait.SpinUntil(() => true, 1000);
+                    //SpinWait.SpinUntil(() => true, 1);
+                    //SpinWait.SpinUntil(() => false, 1);
                 }
                 catch (Exception ex)
                 {
@@ -220,7 +221,9 @@ namespace SerialPortTerminal
         }
         private void DisplayText(string buffer)
         {
-            if(WriteLog != null)
+            richTextBox_View.AppendText(buffer.Replace("\r\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));
+
+            if (WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
             richTextBox_View.AppendText(buffer.Replace("\r\n", "\n"));
