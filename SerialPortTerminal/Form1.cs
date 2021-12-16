@@ -221,7 +221,11 @@ namespace SerialPortTerminal
         }
         private void DisplayText(string buffer)
         {
-            richTextBox_View.AppendText(buffer.Replace("\0\0", "\r\n").Replace("\r\n\0", "\r\n").Replace("\0", "\r\n").Replace("\r\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));
+            richTextBox_View.AppendText(buffer.Replace("\r", "")
+                .Replace("\0\0", "\n")
+                .Replace("\n\0", "\n")
+                .Replace("\0", "\n")
+                .Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));
 
             if (WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
