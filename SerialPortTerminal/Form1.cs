@@ -225,7 +225,7 @@ namespace SerialPortTerminal
                 .Replace("\0\0", "\n")
                 .Replace("\n\0", "\n")
                 .Replace("\0", "\n")
-                .Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));
+                .Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));//Add Time remove all \r
 
             if (WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
