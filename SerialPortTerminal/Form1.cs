@@ -203,7 +203,7 @@ namespace SerialPortTerminal
                                                                 //Thread.Sleep(1);                        
                     }
 
-                    SpinWait.SpinUntil(() => true, 1000);
+                    //SpinWait.SpinUntil(() => true, 1000);
                     //SpinWait.SpinUntil(() => true, 1);
                     //SpinWait.SpinUntil(() => false, 1);
                 }
@@ -221,12 +221,11 @@ namespace SerialPortTerminal
         }
         private void DisplayText(string buffer)
         {
-            richTextBox_View.AppendText(buffer.Replace("\r\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));
+            richTextBox_View.AppendText(buffer.Replace("\0\0", "\r\n").Replace("\r\n\0", "\r\n").Replace("\0", "\r\n").Replace("\r\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));
 
             if (WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
-            richTextBox_View.AppendText(buffer.Replace("\r\n", "\n"));
             if (checkBox_ENdLine.Checked)
             {
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
