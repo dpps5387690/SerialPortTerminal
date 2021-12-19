@@ -202,7 +202,7 @@ namespace SerialPortTerminal
                                                                 //this.BeginInvoke(d, new Object[] { buffer });//使用委託的方式操作control
                                                                 //Thread.Sleep(1);                        
                     }
-
+                    Thread.Sleep(1);
                     //SpinWait.SpinUntil(() => true, 1000);
                     //SpinWait.SpinUntil(() => true, 1);
                     //SpinWait.SpinUntil(() => false, 1);
