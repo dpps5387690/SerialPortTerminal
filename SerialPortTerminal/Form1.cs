@@ -221,12 +221,15 @@ namespace SerialPortTerminal
         }
         private void DisplayText(string buffer)
         {
-            richTextBox_View.AppendText(buffer.Replace("\r", "")
+            string output = buffer.Replace("\r", "")
                 .Replace("\0\0", "\n")
                 .Replace("\n\0", "\n")
-                .Replace("\0", "\n")
-                .Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] "));//Add Time remove all \r
+                .Replace("\0", "\n");
 
+            if(checkBox_Time.Checked)
+                output = output.Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] ");//Add Time remove all \r
+
+            richTextBox_View.AppendText(output);
             if (WriteLog != null)
                 WriteLog.WriteLine(buffer.Replace("\r", ""));
 
@@ -398,10 +401,6 @@ namespace SerialPortTerminal
                 FindNext();
             if (checkBox_ENdLine.Checked)
                 checkBox_ENdLine.Checked = false;
-        }
-        private void richTextBox_View_VScroll(object sender, EventArgs e)
-        {
-
         }
     }
 

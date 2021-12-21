@@ -44,6 +44,7 @@
             this.button_StartStop = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.checkBox_Time = new System.Windows.Forms.CheckBox();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,13 +60,13 @@
             this.richTextBox_View.TabIndex = 0;
             this.richTextBox_View.Text = "";
             this.richTextBox_View.WordWrap = false;
-            this.richTextBox_View.VScroll += new System.EventHandler(this.richTextBox_View_VScroll);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.panel4.Controls.Add(this.comboBox_Speed);
             this.panel4.Controls.Add(this.comboBox_PortNum);
+            this.panel4.Controls.Add(this.checkBox_Time);
             this.panel4.Controls.Add(this.checkBox_ENdLine);
             this.panel4.Controls.Add(this.underLineTextBox_Find);
             this.panel4.Controls.Add(this.button_SaveLog);
@@ -242,6 +243,18 @@
             this.panel1.Size = new System.Drawing.Size(1010, 588);
             this.panel1.TabIndex = 35;
             // 
+            // checkBox_Time
+            // 
+            this.checkBox_Time.AutoSize = true;
+            this.checkBox_Time.Checked = true;
+            this.checkBox_Time.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Time.Location = new System.Drawing.Point(571, 5);
+            this.checkBox_Time.Name = "checkBox_Time";
+            this.checkBox_Time.Size = new System.Drawing.Size(61, 23);
+            this.checkBox_Time.TabIndex = 14;
+            this.checkBox_Time.Text = "TIme";
+            this.checkBox_Time.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -283,6 +296,7 @@
         private System.Windows.Forms.ComboBox comboBox_PortNum;
         private System.Windows.Forms.ComboBox comboBox_Speed;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox checkBox_Time;
     }
 }
 
