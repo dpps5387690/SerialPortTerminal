@@ -21,6 +21,7 @@ namespace SerialPortTerminal
         static bool _continue;
         Thread readThread;
         private SerialPort _serialPort;
+        private const long LimitMemorySize = 200000;
         delegate void Display(string buffer);
         public Form1()
         {
@@ -110,7 +111,7 @@ namespace SerialPortTerminal
         private void HotKey_Init()
         {
             foreach (HotKeyClass hotKeyClass in HotName)
-            {             
+            {
                 string keycomb = "";
                 Keys keynum = hotKeyClass.keys;
                 Keys keyModnum = hotKeyClass.keyModifiers;
@@ -203,6 +204,9 @@ namespace SerialPortTerminal
                                                                 //Thread.Sleep(1);                        
                     }
                     Thread.Sleep(1);
+
+
+
                     //SpinWait.SpinUntil(() => true, 1000);
                     //SpinWait.SpinUntil(() => true, 1);
                     //SpinWait.SpinUntil(() => false, 1);
@@ -215,9 +219,9 @@ namespace SerialPortTerminal
                         button_StartStop.Tag = "Stop";
                         button_StartStop.BackgroundImage = Properties.Resources.pause_90px;
                     }));
-                    bunifuImageButton_StartStop_Click(button_StartStop, null);                    
+                    bunifuImageButton_StartStop_Click(button_StartStop, null);
                 }
-        }
+            }
         }
         private void DisplayText(string buffer)
         {
@@ -226,7 +230,7 @@ namespace SerialPortTerminal
                 .Replace("\n\0", "\n")
                 .Replace("\0", "\n");
 
-            if(checkBox_Time.Checked)
+            if (checkBox_Time.Checked)
                 output = output.Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] ");//Add Time remove all \r
 
             richTextBox_View.AppendText(output);
@@ -238,6 +242,21 @@ namespace SerialPortTerminal
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
                 richTextBox_View.ScrollToCaret();
             }
+            Process currentProcess = Process.GetCurrentProcess();
+            string currentProcessName = currentProcess.ProcessName;
+            var counter = new PerformanceCounter("Process", "Working Set - Private", currentProcessName);
+            //long memoryUsage = currentProcess.PrivateMemorySize64;
+            //currentProcess.Close();
+            //long memoryUsage = System.GC.GetTotalMemory(true);
+
+            //Console.WriteLine("Memory Usage：{0} KBytes", memoryUsage/1024);
+            long MemorySize = counter.RawValue / 1024;
+            Console.WriteLine("{0}K", counter.RawValue / 1024);
+            if (checkBox_AutoClear.Checked && MemorySize > LimitMemorySize)
+            {
+                richTextBox_View.Clear();
+            }
+
         }
         private void bunifuImageButton_StartStop_Click(object sender, EventArgs e)
         {
@@ -342,7 +361,7 @@ namespace SerialPortTerminal
                 WriteLog.Close();
                 WriteLog = null;
             }
-            
+
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -362,7 +381,7 @@ namespace SerialPortTerminal
         int selectionStop = 0;
         private void ShowFind()
         {
-            
+
             if (selectionStart == -1)
             {
                 MessageBox.Show("Not find.");

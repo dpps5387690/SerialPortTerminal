@@ -32,8 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBox_AutoClear = new System.Windows.Forms.CheckBox();
             this.comboBox_Speed = new System.Windows.Forms.ComboBox();
             this.comboBox_PortNum = new System.Windows.Forms.ComboBox();
+            this.checkBox_Time = new System.Windows.Forms.CheckBox();
             this.checkBox_ENdLine = new System.Windows.Forms.CheckBox();
             this.underLineTextBox_Find = new SerialPortTerminal.UnderLineTextBox();
             this.button_SaveLog = new System.Windows.Forms.Button();
@@ -64,6 +66,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.panel4.Controls.Add(this.checkBox_AutoClear);
             this.panel4.Controls.Add(this.comboBox_Speed);
             this.panel4.Controls.Add(this.comboBox_PortNum);
             this.panel4.Controls.Add(this.checkBox_Time);
@@ -81,6 +84,16 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1010, 55);
             this.panel4.TabIndex = 33;
+            // 
+            // checkBox_AutoClear
+            // 
+            this.checkBox_AutoClear.AutoSize = true;
+            this.checkBox_AutoClear.Location = new System.Drawing.Point(638, 5);
+            this.checkBox_AutoClear.Name = "checkBox_AutoClear";
+            this.checkBox_AutoClear.Size = new System.Drawing.Size(93, 23);
+            this.checkBox_AutoClear.TabIndex = 16;
+            this.checkBox_AutoClear.Text = "AutoClear";
+            this.checkBox_AutoClear.UseVisualStyleBackColor = true;
             // 
             // comboBox_Speed
             // 
@@ -112,6 +125,18 @@
             this.comboBox_PortNum.Size = new System.Drawing.Size(120, 27);
             this.comboBox_PortNum.TabIndex = 15;
             this.comboBox_PortNum.Tag = "SMBUS_Select";
+            // 
+            // checkBox_Time
+            // 
+            this.checkBox_Time.AutoSize = true;
+            this.checkBox_Time.Checked = true;
+            this.checkBox_Time.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Time.Location = new System.Drawing.Point(571, 5);
+            this.checkBox_Time.Name = "checkBox_Time";
+            this.checkBox_Time.Size = new System.Drawing.Size(61, 23);
+            this.checkBox_Time.TabIndex = 14;
+            this.checkBox_Time.Text = "TIme";
+            this.checkBox_Time.UseVisualStyleBackColor = true;
             // 
             // checkBox_ENdLine
             // 
@@ -297,6 +322,7 @@
         private System.Windows.Forms.ComboBox comboBox_Speed;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.CheckBox checkBox_Time;
+        private System.Windows.Forms.CheckBox checkBox_AutoClear;
     }
 }
 
