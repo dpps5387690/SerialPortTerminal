@@ -160,6 +160,8 @@ namespace SerialPortTerminal
 
             richTextBox_View.SelectionTabs = css.ToArray();
 
+            //richTextBox_View.Font = new Font(FontFamily.GenericMonospace, richTextBox_View.Font.Size);
+
             //richTextBox_View.AppendText(str1);
             //richTextBox_View.AppendText(str2);
             //richTextBox_View.AppendText(str3);
@@ -204,9 +206,6 @@ namespace SerialPortTerminal
                                                                 //Thread.Sleep(1);                        
                     }
                     Thread.Sleep(1);
-
-
-
                     //SpinWait.SpinUntil(() => true, 1000);
                     //SpinWait.SpinUntil(() => true, 1);
                     //SpinWait.SpinUntil(() => false, 1);
@@ -219,9 +218,9 @@ namespace SerialPortTerminal
                         button_StartStop.Tag = "Stop";
                         button_StartStop.BackgroundImage = Properties.Resources.pause_90px;
                     }));
-                    bunifuImageButton_StartStop_Click(button_StartStop, null);
+                    bunifuImageButton_StartStop_Click(button_StartStop, null);                    
                 }
-            }
+        }
         }
         private void DisplayText(string buffer)
         {
@@ -230,7 +229,7 @@ namespace SerialPortTerminal
                 .Replace("\n\0", "\n")
                 .Replace("\0", "\n");
 
-            if (checkBox_Time.Checked)
+            if(checkBox_Time.Checked)
                 output = output.Replace("\n", "\n" + "[" + DateTime.Now.ToString("MM-dd HH:mm:ss") + "] ");//Add Time remove all \r
 
             richTextBox_View.AppendText(output);
@@ -361,7 +360,7 @@ namespace SerialPortTerminal
                 WriteLog.Close();
                 WriteLog = null;
             }
-
+            
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -381,7 +380,7 @@ namespace SerialPortTerminal
         int selectionStop = 0;
         private void ShowFind()
         {
-
+            
             if (selectionStart == -1)
             {
                 MessageBox.Show("Not find.");
@@ -420,6 +419,12 @@ namespace SerialPortTerminal
                 FindNext();
             if (checkBox_ENdLine.Checked)
                 checkBox_ENdLine.Checked = false;
+        }
+
+        private void button_Send_Click(object sender, EventArgs e)
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text + "\r\n");
+            _serialPort.Write(data, 0, data.Length);
         }
     }
 

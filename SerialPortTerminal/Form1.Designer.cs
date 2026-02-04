@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.richTextBox_View = new System.Windows.Forms.RichTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button_Send = new System.Windows.Forms.Button();
+            this.textBox_Send = new System.Windows.Forms.TextBox();
             this.checkBox_AutoClear = new System.Windows.Forms.CheckBox();
             this.comboBox_Speed = new System.Windows.Forms.ComboBox();
             this.comboBox_PortNum = new System.Windows.Forms.ComboBox();
@@ -46,7 +48,6 @@
             this.button_StartStop = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBox_Time = new System.Windows.Forms.CheckBox();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +55,7 @@
             // richTextBox_View
             // 
             this.richTextBox_View.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox_View.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_View.Location = new System.Drawing.Point(0, 0);
             this.richTextBox_View.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.richTextBox_View.Name = "richTextBox_View";
@@ -66,6 +68,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.panel4.Controls.Add(this.button_Send);
+            this.panel4.Controls.Add(this.textBox_Send);
             this.panel4.Controls.Add(this.checkBox_AutoClear);
             this.panel4.Controls.Add(this.comboBox_Speed);
             this.panel4.Controls.Add(this.comboBox_PortNum);
@@ -84,6 +88,23 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1010, 55);
             this.panel4.TabIndex = 33;
+            // 
+            // button_Send
+            // 
+            this.button_Send.Location = new System.Drawing.Point(894, 17);
+            this.button_Send.Name = "button_Send";
+            this.button_Send.Size = new System.Drawing.Size(75, 23);
+            this.button_Send.TabIndex = 17;
+            this.button_Send.Text = "Send";
+            this.button_Send.UseVisualStyleBackColor = true;
+            this.button_Send.Click += new System.EventHandler(this.button_Send_Click);
+            // 
+            // textBox_Send
+            // 
+            this.textBox_Send.Location = new System.Drawing.Point(788, 16);
+            this.textBox_Send.Name = "textBox_Send";
+            this.textBox_Send.Size = new System.Drawing.Size(100, 27);
+            this.textBox_Send.TabIndex = 16;			
             // 
             // checkBox_AutoClear
             // 
@@ -323,6 +344,8 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.CheckBox checkBox_Time;
         private System.Windows.Forms.CheckBox checkBox_AutoClear;
+        private System.Windows.Forms.TextBox textBox_Send;
+        private System.Windows.Forms.Button button_Send;		
     }
 }
 
