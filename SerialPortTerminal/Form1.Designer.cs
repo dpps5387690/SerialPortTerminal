@@ -40,14 +40,14 @@
             this.checkBox_Time = new System.Windows.Forms.CheckBox();
             this.checkBox_ENdLine = new System.Windows.Forms.CheckBox();
             this.underLineTextBox_Find = new SerialPortTerminal.UnderLineTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button_SaveLog = new System.Windows.Forms.Button();
             this.button_Find = new System.Windows.Forms.Button();
             this.button_Clear = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.button_ReFresh = new System.Windows.Forms.Button();
             this.button_StartStop = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -91,12 +91,18 @@
             // 
             // button_Send
             // 
-            this.button_Send.Location = new System.Drawing.Point(894, 17);
+            this.button_Send.BackColor = System.Drawing.Color.Gray;
+            this.button_Send.BackgroundImage = global::SerialPortTerminal.Properties.Resources.paper_plane;
+            this.button_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_Send.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button_Send.FlatAppearance.BorderSize = 0;
+            this.button_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Send.Location = new System.Drawing.Point(903, 3);
             this.button_Send.Name = "button_Send";
-            this.button_Send.Size = new System.Drawing.Size(75, 23);
-            this.button_Send.TabIndex = 17;
-            this.button_Send.Text = "Send";
-            this.button_Send.UseVisualStyleBackColor = true;
+            this.button_Send.Size = new System.Drawing.Size(50, 50);
+            this.button_Send.TabIndex = 18;
+            this.button_Send.Tag = "";
+            this.button_Send.UseVisualStyleBackColor = false;
             this.button_Send.Click += new System.EventHandler(this.button_Send_Click);
             // 
             // textBox_Send
@@ -104,7 +110,7 @@
             this.textBox_Send.Location = new System.Drawing.Point(788, 16);
             this.textBox_Send.Name = "textBox_Send";
             this.textBox_Send.Size = new System.Drawing.Size(100, 27);
-            this.textBox_Send.TabIndex = 16;			
+            this.textBox_Send.TabIndex = 16;
             // 
             // checkBox_AutoClear
             // 
@@ -183,6 +189,15 @@
             this.underLineTextBox_Find.Size = new System.Drawing.Size(100, 22);
             this.underLineTextBox_Find.TabIndex = 13;
             this.underLineTextBox_Find.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bunifuMaterialTextbox_Find_KeyDown);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.richTextBox_View);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 55);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1010, 588);
+            this.panel1.TabIndex = 35;
             // 
             // button_SaveLog
             // 
@@ -280,27 +295,6 @@
             this.button_StartStop.UseVisualStyleBackColor = false;
             this.button_StartStop.Click += new System.EventHandler(this.bunifuImageButton_StartStop_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.richTextBox_View);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 55);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1010, 588);
-            this.panel1.TabIndex = 35;
-            // 
-            // checkBox_Time
-            // 
-            this.checkBox_Time.AutoSize = true;
-            this.checkBox_Time.Checked = true;
-            this.checkBox_Time.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox_Time.Location = new System.Drawing.Point(571, 5);
-            this.checkBox_Time.Name = "checkBox_Time";
-            this.checkBox_Time.Size = new System.Drawing.Size(61, 23);
-            this.checkBox_Time.TabIndex = 14;
-            this.checkBox_Time.Text = "TIme";
-            this.checkBox_Time.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -345,7 +339,7 @@
         private System.Windows.Forms.CheckBox checkBox_Time;
         private System.Windows.Forms.CheckBox checkBox_AutoClear;
         private System.Windows.Forms.TextBox textBox_Send;
-        private System.Windows.Forms.Button button_Send;		
+        private System.Windows.Forms.Button button_Send;
     }
 }
 
