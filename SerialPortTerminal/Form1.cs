@@ -424,7 +424,11 @@ namespace SerialPortTerminal
         private void button_Send_Click(object sender, EventArgs e)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text + "\r\n");
-            _serialPort.Write(data, 0, data.Length);
+            for(int index = 0; index < data.Length; index++)
+            {
+                _serialPort.Write(data, index, 1);
+            }
+            //_serialPort.Write(data, 0, data.Length);
         }
     }
 
