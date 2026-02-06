@@ -420,13 +420,23 @@ namespace SerialPortTerminal
             if (checkBox_ENdLine.Checked)
                 checkBox_ENdLine.Checked = false;
         }
-
+        public const long microsecondsPerSecond = 1000000;
+        public static void MicrosecondsDelay(long Seconds = 0, long MilliSeconds = 0, long MicroSeconds = 0)
+        {
+            long waitMicroseconds = (long)(Seconds * Math.Pow(10, 6) + MilliSeconds * Math.Pow(10, 3) + MicroSeconds);
+            long waitTicks = (waitMicroseconds * Stopwatch.Frequency) / microsecondsPerSecond;
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            while (sw.ElapsedTicks <= waitTicks) ;// SpinWait.SpinUntil(() => false, 1);
+        }
         private void button_Send_Click(object sender, EventArgs e)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text + "\r\n");
-            for(int index = 0; index < data.Length; index++)
-            {
+            //byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text);
+            for (int index = 0; index < data.Length; index++)
+            {                
                 _serialPort.Write(data, index, 1);
+                MicrosecondsDelay(MilliSeconds: 10);
             }
             //_serialPort.Write(data, 0, data.Length);
         }
