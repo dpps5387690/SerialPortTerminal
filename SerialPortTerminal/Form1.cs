@@ -431,7 +431,7 @@ namespace SerialPortTerminal
         }
         private void button_Send_Click(object sender, EventArgs e)
         {
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text + "\r\n");
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text + "\r");
             //byte[] data = System.Text.Encoding.ASCII.GetBytes(textBox_Send.Text);
             for (int index = 0; index < data.Length; index++)
             {                
