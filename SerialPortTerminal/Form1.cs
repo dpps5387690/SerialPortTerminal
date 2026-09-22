@@ -185,6 +185,8 @@ namespace SerialPortTerminal
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
             _serialPort.Handshake = Handshake.None;
+            _serialPort.DtrEnable = true;
+            _serialPort.RtsEnable = true;
             //_serialPort.ReadTimeout = 10;
             //_serialPort.DataReceived += new SerialDataReceivedEventHandler(comport_DataReceived);
             //_serialPort.WriteTimeout = 500;
@@ -241,20 +243,20 @@ namespace SerialPortTerminal
                 richTextBox_View.SelectionStart = richTextBox_View.Text.Length;
                 richTextBox_View.ScrollToCaret();
             }
-            Process currentProcess = Process.GetCurrentProcess();
-            string currentProcessName = currentProcess.ProcessName;
-            var counter = new PerformanceCounter("Process", "Working Set - Private", currentProcessName);
-            //long memoryUsage = currentProcess.PrivateMemorySize64;
-            //currentProcess.Close();
-            //long memoryUsage = System.GC.GetTotalMemory(true);
+            //Process currentProcess = Process.GetCurrentProcess();
+            //string currentProcessName = currentProcess.ProcessName;
+            //var counter = new PerformanceCounter("Process", "Working Set - Private", currentProcessName);
+            ////long memoryUsage = currentProcess.PrivateMemorySize64;
+            ////currentProcess.Close();
+            ////long memoryUsage = System.GC.GetTotalMemory(true);
 
-            //Console.WriteLine("Memory Usage：{0} KBytes", memoryUsage/1024);
-            long MemorySize = counter.RawValue / 1024;
-            Console.WriteLine("{0}K", counter.RawValue / 1024);
-            if (checkBox_AutoClear.Checked && MemorySize > LimitMemorySize)
-            {
-                richTextBox_View.Clear();
-            }
+            ////Console.WriteLine("Memory Usage：{0} KBytes", memoryUsage/1024);
+            //long MemorySize = counter.RawValue / 1024;
+            //Console.WriteLine("{0}K", counter.RawValue / 1024);
+            //if (checkBox_AutoClear.Checked && MemorySize > LimitMemorySize)
+            //{
+            //    richTextBox_View.Clear();
+            //}
 
         }
         private void bunifuImageButton_StartStop_Click(object sender, EventArgs e)
